@@ -11,9 +11,9 @@
 ## JSON Schema
 
 ## Roles
-UI Specialist: Zach Filla
-Business Logic/Persistence:
-DevOps/Product Owner/Scrum Master/GitHub Admin: Bella Orr
+* UI Specialist: Zach Filla
+* Business Logic/Persistence:
+* DevOps/Product Owner/Scrum Master/GitHub Admin: Bella Orr
 
 ## Scrum Board
 
