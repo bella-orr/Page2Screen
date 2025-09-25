@@ -12,7 +12,7 @@
 
 ## Roles
 * UI Specialist: Zach Filla
-* Business Logic/Persistence:
+* Business Logic/Persistence:Elijah Cassidy
 * DevOps/Product Owner/Scrum Master/GitHub Admin: Bella Orr
 
 ## Github link
