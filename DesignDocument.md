@@ -75,6 +75,7 @@ Work "1" o-- "0..*" WorkCredit : credits
 Work "1" *-- "0..1" ExternalIds : externalIds
 Work "1" --> "0..*" Review : has reviews
 Review "1" --> "1" UserPublic : author
+```
 
 ## JSON Schema
 
