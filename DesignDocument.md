@@ -1,6 +1,7 @@
 # Group7_EnterpriseApplicationDev
 
 ## Introduction
+
 Page2Screen is a web application that enables users to consolidate all their book and movie reviews in one location. Instead 
 By browsing different websites to find personal reviews and ratings, users can conveniently write, store, and share their 
 opinions on what they read and watch. Within the simple UI, users can add titles, types of media, authors/directors, ratings, 
@@ -9,6 +10,21 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 ## Storyboard
 
 ## Functional Requirements
+
+As a user, I want to be able to add a review for a book or movie, so that I can keep track of my opinions and share them with others.
+Given: I am logged in to my account
+When: I enter a title, media, rating, or comment and click save
+Then: the web application saves my review.
+
+As a user, I want to be able to update or delete a review for a book or movie, so that I can change my opinion or remove content I no longer want to share.
+Given: I have already created a review
+When: I choose the edit/delete button on that review
+Then: the web application updates the changes made.
+
+As a user, I want to be able to see reviews of a book or movie, so I can understand others' opinions on them and decide whether or not to also read/ watch it.
+Given: A title exists in the database
+When: I search for the title and select it
+Then: I can see all the reviews, ratings, and comments with that title name.
 
 ## Class Diagram
 
