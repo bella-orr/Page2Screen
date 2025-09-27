@@ -1,6 +1,15 @@
 # Group7_EnterpriseApplicationDev
 
 ## Introduction
+Page2Screen is a web application that enables users to consolidate all their book and movie reviews in one location. Instead 
+
+By browsing different websites to find personal reviews and ratings, users can conveniently write, store, and share their 
+
+opinions on what they read and watch. Within the simple UI, users can add titles, types of media, authors/directors, ratings, 
+
+and comments on their most loved or most disliked works.Page2Screen allows story lovers to create a personalized hub for 
+
+thoughts and connections.
 
 ## Storyboard
 
@@ -11,8 +20,8 @@
 ## JSON Schema
 
 ## Roles
-* UI Specialist: Zach Filla
-* Business Logic/Persistence:Elijah Cassidy
+* UI Specialist(s): Zach Filla, Andrew Bagby
+* Business Logic/Persistence: Elijah Cassidy
 * DevOps/Product Owner/Scrum Master/GitHub Admin: Bella Orr
 
 ## Github link
