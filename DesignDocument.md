@@ -31,7 +31,7 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 classDiagram
 direction LR
 
-class Work { 
+class Media { 
   +id: UUID
   +title: String
   +mediaType: String  // "BOOK" | "MOVIE"
@@ -60,7 +60,7 @@ class UserPublic {
   +displayName: String
 }
 
-class WorkCredit {
+class MediaCredit {
   +role: String
   +name: String
 }
@@ -71,9 +71,9 @@ class ExternalIds {
   +imdbId: String
 }
 
-Work "1" o-- "0..*" WorkCredit : credits
-Work "1" *-- "0..1" ExternalIds : externalIds
-Work "1" --> "0..*" Review : has reviews
+Media "1" o-- "0..*" MediaCredit : credits
+Media "1" *-- "0..1" ExternalIds : externalIds
+Media "1" --> "0..*" Review : has reviews
 Review "1" --> "1" UserPublic : author
 ```
 
