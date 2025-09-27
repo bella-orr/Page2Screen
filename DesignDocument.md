@@ -27,7 +27,7 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 **Then**: I can see all the reviews, ratings, and comments with that title name. 
 
 ## Class Diagram
-
+```mermaid
 classDiagram
 direction LR
 
