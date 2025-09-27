@@ -28,6 +28,60 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 
 ## Class Diagram
 
+classDiagram
+direction LR
+
+class Work {
+  +UUID id
+  +String title
+  +MediaType mediaType
+  +Integer releaseYear
+  +List<WorkCredit> credits
+  +ExternalIds externalIds
+  +Instant createdAt
+  +Instant updatedAt
+}
+
+class Review {
+  +UUID id
+  +UUID workId
+  +UserPublic author
+  +int rating 1..5
+  +String title
+  +String body
+  +boolean containsSpoilers
+  +int likes
+  +Instant createdAt
+  +Instant updatedAt
+}
+
+class UserPublic {
+  +UUID id
+  +String displayName
+}
+
+class WorkCredit {
+  +String role
+  +String name
+}
+
+class ExternalIds {
+  +String isbn10
+  +String isbn13
+  +String imdbId
+}
+
+enum MediaType {
+  BOOK
+  MOVIE
+}
+
+Work "1" o-- "0..*" WorkCredit : credits
+Work "1" *-- "0..1" ExternalIds : externalIds
+Work "1" --> "0..*" Review : has reviews
+Review "1" --> "1" UserPublic : author
+
+
 ## JSON Schema
 
 ## Roles
