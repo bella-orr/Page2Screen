@@ -30,56 +30,51 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 ```mermaid
 classDiagram
 direction LR
-class Work {
-  +UUID id
-  +String title
-  +String mediaType ("BOOK" | "MOVIE")
-  +Integer releaseYear
-  +List<WorkCredit> credits
-  +ExternalIds externalIds
-  +Instant createdAt
-  +Instant updatedAt
+
+class Work { 
+  +id: UUID
+  +title: String
+  +mediaType: String  // "BOOK" | "MOVIE"
+  +releaseYear: Integer
+  +credits: WorkCredit[*]
+  +externalIds: ExternalIds
+  +createdAt: Instant
+  +updatedAt: Instant
 }
 
 class Review {
-  +UUID id
-  +UUID workId
-  +UserPublic author
-  +int rating 1..5
-  +String title
-  +String body
-  +boolean containsSpoilers
-  +int likes
-  +Instant createdAt
-  +Instant updatedAt
+  +id: UUID
+  +workId: UUID
+  +author: UserPublic
+  +rating: int
+  +title: String
+  +body: String
+  +containsSpoilers: boolean
+  +likes: int
+  +createdAt: Instant
+  +updatedAt: Instant
 }
 
 class UserPublic {
-  +UUID id
-  +String displayName
+  +id: UUID
+  +displayName: String
 }
 
 class WorkCredit {
-  +String role
-  +String name
+  +role: String
+  +name: String
 }
 
 class ExternalIds {
-  +String isbn10
-  +String isbn13
-  +String imdbId
-}
-
-enum MediaType {
-  BOOK
-  MOVIE
+  +isbn10: String
+  +isbn13: String
+  +imdbId: String
 }
 
 Work "1" o-- "0..*" WorkCredit : credits
 Work "1" *-- "0..1" ExternalIds : externalIds
 Work "1" --> "0..*" Review : has reviews
 Review "1" --> "1" UserPublic : author
-
 
 ## JSON Schema
 
