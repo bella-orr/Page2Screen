@@ -30,11 +30,10 @@ and comments on their most loved or most disliked works. Page2Screen allows stor
 ```mermaid
 classDiagram
 direction LR
-
 class Work {
   +UUID id
   +String title
-  +MediaType mediaType
+  +String mediaType ("BOOK" | "MOVIE")
   +Integer releaseYear
   +List<WorkCredit> credits
   +ExternalIds externalIds
