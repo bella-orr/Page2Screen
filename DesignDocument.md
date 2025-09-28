@@ -77,8 +77,33 @@ Media "1" --> "0..*" Review : has reviews
 Review "1" --> "1" UserPublic : author
 ```
 
-## JSON Schema
+## UI Diagram
 <img width="1000" height="1038" alt="image" src="https://github.com/user-attachments/assets/4c897d83-486c-4a34-8c1f-4418b9d0c1a0" />
+
+## JSON Schema
+>{
+>  "type": "object",
+>  "properties": {
+>    "id": { "type": "string", "format": "uuid" },
+>    "workId": { "type": "string", "format": "uuid" },
+>    "author": {
+>      "type": "object",
+>      "properties": {
+>        "id": { "type": "string", "format": "uuid" },
+>        "displayName": { "type": "string" }
+>      },
+>      "required": ["id", "displayName"]
+>   },
+>   "rating": { "type": "integer", "minimum": 1, "maximum": 10 },
+>    "title": { "type": "string" },
+>    "body": { "type": "string" },
+>    "containsSpoilers": { "type": "boolean" },
+>    "likes": { "type": "integer", "minimum": 0 },
+>    "createdAt": { "type": "string", "format": "date-time" },
+>    "updatedAt": { "type": "string", "format": "date-time" }
+>  },
+>  "required": ["id", "workId", "author", "rating", "title", "body", >"createdAt"]
+>}
 
 ## Roles
 * UI Specialist(s): Zach Filla, Andrew Bagby
