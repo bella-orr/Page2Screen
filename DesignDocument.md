@@ -77,10 +77,6 @@ Media "1" --> "0..*" Review : has reviews
 Review "1" --> "1" UserPublic : author
 ```
 
-## UI Diagram
-
-<img width="1000" height="1038" alt="image" src="https://github.com/user-attachments/assets/4c897d83-486c-4a34-8c1f-4418b9d0c1a0" />
-
 ## JSON Schema
 
 ```json
@@ -108,6 +104,44 @@ Review "1" --> "1" UserPublic : author
   "required": ["id", "workId", "author", "rating", "title", "body", "createdAt"]
 }
 ```
+
+## UI Diagram
+
+<img width="1000" height="1038" alt="image" src="https://github.com/user-attachments/assets/4c897d83-486c-4a34-8c1f-4418b9d0c1a0" />
+
+## UI Storyboards
+
+### Home
+
+![Home Page](designs/wireframes-Home%20Page.drawio.png)
+
+### Profile
+
+![Profile Page](designs/wireframes-Profile%20Page.drawio.png)
+
+### Search Results
+
+![Search Results Page](designs/wireframes-Search%20Results.drawio.png)
+
+### Add New Book/Movie
+
+![Add New Book or Movie Page](designs/wireframes-AddBookMovie%20Page.drawio.png)
+
+### Book/Movie Page
+
+There are 3 different states depending on the presence of the current user having reviewed the book or movie.
+
+#### No Review
+
+![Book or Movie Page with no review](<designs/wireframes-BookMovie%20Page%20(No%20Review).drawio.png>)
+
+#### Editing Review
+
+![Book or Movie Page while editing a review](<designs/wireframes-BookMovie%20Page%20(Editing%20Review).drawio.png>)
+
+#### With Review
+
+![Book or Movie Page with a review](<designs/wireframes-BookMovie%20Page%20(With%20Review).drawio.png>)
 
 ## Roles
 
