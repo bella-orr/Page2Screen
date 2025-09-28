@@ -78,6 +78,7 @@ Review "1" --> "1" UserPublic : author
 ```
 
 ## JSON Schema
+<img width="1000" height="1038" alt="image" src="https://github.com/user-attachments/assets/4c897d83-486c-4a34-8c1f-4418b9d0c1a0" />
 
 ## Roles
 * UI Specialist(s): Zach Filla, Andrew Bagby
