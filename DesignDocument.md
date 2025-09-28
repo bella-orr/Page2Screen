@@ -6,8 +6,6 @@ Page2Screen is a web application that enables users to consolidate all their boo
 
 Page2Screen allows story lovers to create a personalized hub for thoughts and connections.
 
-## Storyboard
-
 ## Functional Requirements
 
 1. As a user, I want to be able to add a review for a book or movie, so that I can keep track of my opinions and share them with others. \
@@ -84,25 +82,66 @@ Review "1" --> "1" UserPublic : author
   "type": "object",
   "properties": {
     "id": { "type": "string", "format": "uuid" },
-    "workId": { "type": "string", "format": "uuid" },
-    "author": {
+    "title": { "type": "string" },
+    "mediaType": { "type": "string", "enum": ["BOOK", "MOVIE"] },
+    "releaseYear": { "type": "integer" },
+    "credits": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/MediaCredit" }
+    },
+    "externalIds": { "$ref": "#/$defs/ExternalIds" },
+    "reviews": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Review" }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "title", "mediaType", "releaseYear", "createdAt"],
+  "$defs": {
+    "MediaCredit": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["role", "name"]
+    },
+    "ExternalIds": {
+      "type": "object",
+      "properties": {
+        "isbn10": { "type": "string" },
+        "isbn13": { "type": "string" },
+        "imdbId": { "type": "string" }
+      }
+    },
+    "Review": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "workId": { "type": "string", "format": "uuid" },
+        "author": { "$ref": "#/$defs/UserPublic" },
+        "rating": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "containsSpoilers": { "type": "boolean" },
+        "likes": { "type": "integer", "minimum": 0 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "workId", "author", "rating", "title", "body", "createdAt"]
+    },
+    "UserPublic": {
       "type": "object",
       "properties": {
         "id": { "type": "string", "format": "uuid" },
         "displayName": { "type": "string" }
       },
       "required": ["id", "displayName"]
-    },
-    "rating": { "type": "integer", "minimum": 1, "maximum": 10 },
-    "title": { "type": "string" },
-    "body": { "type": "string" },
-    "containsSpoilers": { "type": "boolean" },
-    "likes": { "type": "integer", "minimum": 0 },
-    "createdAt": { "type": "string", "format": "date-time" },
-    "updatedAt": { "type": "string", "format": "date-time" }
-  },
-  "required": ["id", "workId", "author", "rating", "title", "body", "createdAt"]
+    }
+  }
 }
+
 ```
 
 ## UI Diagram
