@@ -1,0 +1,42 @@
+### Create a work
+POST http://localhost:8080/api/works
+Content-Type: application/json
+
+{
+  "title": "Dune",
+  "mediaType": "BOOK",
+  "releaseYear": 1965
+}
+
+### Get a work
+GET http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9
+
+### Create a review
+POST http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9/reviews
+Content-Type: application/json
+
+{
+  "authorId": "11111111-1111-1111-1111-111111111111",
+  "authorDisplayName": "Elijah Cassidy",
+  "rating": 9,
+  "title": "Epic scope",
+  "body": "World-building is unmatched.",
+  "containsSpoilers": false
+}
+
+### List reviews
+GET http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9/reviews
+
+### Update review
+PUT http://localhost:8080/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f
+Content-Type: application/json
+
+{
+  "rating": 10,
+  "title": "Masterpiece",
+  "body": "Even better on reread.",
+  "containsSpoilers": false
+}
+
+### Delete review
+DELETE http://localhost:8080/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f
