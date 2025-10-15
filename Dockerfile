@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7-labs
 
-ARG GRADLE_IMAGE=gradle:8.10-jdk21-alpine
-ARG RUNTIME_IMAGE=eclipse-temurin:21-jre-alpine
+ARG GRADLE_IMAGE=gradle:9.1.0-jdk25
+ARG RUNTIME_IMAGE=eclipse-temurin:25-jre
 
 FROM ${GRADLE_IMAGE} AS build
 WORKDIR /workspace/app
