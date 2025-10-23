@@ -21,6 +21,12 @@ public class ReviewService {
   private final WorkRepository workRepo;
   private final ReviewRepository reviewRepo;
 
+  private static final String WORK_NOT_FOUND        = "Work not found";
+  private static final String REVIEW_NOT_FOUND      = "Review not found";
+  private static final String REVIEW_ALREADY_EXISTS = "Review already exists for this user and work";
+  private static final String TITLE_NULL_OR_EMPTY   = "Title cannot be NULL or empty";
+  private static final String REQUEST_CANNOT_BE_NULL = "Request cannot be NULL";
+
   public ReviewService(WorkRepository workRepo, ReviewRepository reviewRepo) {
     this.workRepo = workRepo;
     this.reviewRepo = reviewRepo;
@@ -28,17 +34,21 @@ public class ReviewService {
 
   @Transactional(readOnly = true)
   public Work getWork(UUID workId) {
-    return workRepo.findById(workId).orElseThrow(() -> new IllegalArgumentException("work not found"));
+    return workRepo.findById(workId).orElseThrow(() -> new IllegalArgumentException(WORK_NOT_FOUND));
   }
 
   @Transactional(readOnly = true)
   public WorkResponse getWorkDetail(UUID workId) {
-    Work work = workRepo.findWithReviewsById(workId).orElseThrow(() -> new IllegalArgumentException("work not found"));
+    Work work = workRepo.findWithReviewsById(workId).orElseThrow(() -> new IllegalArgumentException(WORK_NOT_FOUND));
     return toWorkResponse(work);
   }
 
   @Transactional
   public WorkResponse createWork(String title, MediaType mediaType, Integer releaseYear) {
+    if (title == null || title.isBlank()) {
+      throw new IllegalArgumentException(TITLE_NULL_OR_EMPTY);
+    }
+
     Work w = new Work();
     w.setId(UUID.randomUUID());
     w.setTitle(title);
@@ -60,7 +70,9 @@ public class ReviewService {
   @Transactional
   public ReviewResponse createReview(UUID workId, ReviewCreateRequest req) {
     Work work = getWork(workId);
-    reviewRepo.findByWorkIdAndAuthorId(workId, req.getAuthorId()).ifPresent(r -> { throw new IllegalStateException("review already exists for this user and work"); });
+    reviewRepo.findByWorkIdAndAuthorId(workId, req.getAuthorId()).ifPresent(r -> {
+      throw new IllegalStateException(REVIEW_ALREADY_EXISTS);
+    });
     Review r = new Review();
     r.setId(UUID.randomUUID());
     r.setWork(work);
@@ -79,7 +91,11 @@ public class ReviewService {
 
   @Transactional
   public ReviewResponse updateReview(UUID reviewId, ReviewUpdateRequest req) {
-    Review r = reviewRepo.findById(reviewId).orElseThrow(() -> new IllegalArgumentException("review not found"));
+    if (req == null) {
+      throw new IllegalArgumentException(REQUEST_CANNOT_BE_NULL);
+    }
+
+    Review r = reviewRepo.findById(reviewId).orElseThrow(() -> new IllegalArgumentException(REVIEW_NOT_FOUND));
     r.setRating(req.getRating());
     r.setTitle(req.getTitle());
     r.setBody(req.getBody());
@@ -92,7 +108,7 @@ public class ReviewService {
 
   @Transactional
   public void deleteReview(UUID reviewId) {
-    if (!reviewRepo.existsById(reviewId)) throw new IllegalArgumentException("review not found");
+    if (!reviewRepo.existsById(reviewId)) throw new IllegalArgumentException(REVIEW_NOT_FOUND);
     reviewRepo.deleteById(reviewId);
   }
 
