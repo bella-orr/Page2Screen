@@ -45,6 +45,26 @@ main {
     margin: 20px auto;
 }
 
+.profile-header {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.profile-username {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
 .reviewstitle {
     text-align: center;
     padding: 10px;
