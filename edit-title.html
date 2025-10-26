@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
 
-    <title>Add New Title</title>
+    <title>Edit Title</title>
   </head>
   <body>
     <!--Header-->
@@ -19,7 +19,7 @@
         <li><a href="" class="navbar-brand">Page2Screen</a></li>
         <div class="navbar-main">
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="#">Add a New Title</a></li>
+          <li><a href="add-new.html">Add a New Title</a></li>
         </div>
         <li style="float: right">
           <a href="profile.html"
@@ -38,45 +38,20 @@
     </nav>
     <!--Main Content-->
     <main>
-      <h1>Add New Title</h1>
+      <h1>Edit Title</h1>
       <div class="add-new-container">
-        <!-- media selector -->
-        <!-- used to swap between book and movie forms -->
-        <!-- NOTE: only one will be visible at a time -->
-        <div class="form-row">
-          <label>This is a:</label>
-          <div>
-            <input
-              type="radio"
-              id="type-book"
-              name="mediaType"
-              value="book"
-              checked
-            />
-            <label for="type-book">Book</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="type-movie"
-              name="mediaType"
-              value="movie"
-            />
-            <label for="type-movie">Movie</label>
-          </div>
-        </div>
-
+        <!-- no media selector since the type will be passed in -->
         <!-- Book form -->
         <form id="book-form" class="media-form">
           <fieldset>
-            <legend>Add new book</legend>
+            <legend>Edit book</legend>
             <div class="form-row">
               <label for="book-title">Title:</label>
               <input
                 type="text"
                 id="book-title"
                 name="title"
-                placeholder="Enter title..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -86,7 +61,7 @@
                 type="text"
                 id="book-author"
                 name="author"
-                placeholder="Enter author..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -96,7 +71,7 @@
                 type="text"
                 id="book-year"
                 name="year"
-                placeholder="Enter year..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -108,7 +83,7 @@
                 type="text"
                 id="book-isbn10"
                 name="isbn10"
-                placeholder="Enter ISBN10..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -120,13 +95,13 @@
                 type="text"
                 id="book-isbn13"
                 name="isbn13"
-                placeholder="Enter ISBN13..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
               <button type="button">Cancel</button>
-              <button type="submit">Add Book</button>
+              <button type="submit">Update Book</button>
             </div>
           </fieldset>
         </form>
@@ -134,14 +109,14 @@
         <!-- Movie form -->
         <form id="movie-form" class="media-form">
           <fieldset>
-            <legend>Add new movie</legend>
+            <legend>Edit movie</legend>
             <div class="form-row">
               <label for="movie-title">Title:</label>
               <input
                 type="text"
                 id="movie-title"
                 name="title"
-                placeholder="Enter title..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -151,7 +126,7 @@
                 type="text"
                 id="movie-director"
                 name="director"
-                placeholder="Enter director..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -161,13 +136,13 @@
                 type="text"
                 id="movie-year"
                 name="year"
-                placeholder="Enter year..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
               <button type="button">Cancel</button>
-              <button type="submit">Add Movie</button>
+              <button type="submit">Update Movie</button>
             </div>
           </fieldset>
         </form>
