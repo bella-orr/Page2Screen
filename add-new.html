@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Add New Title</title>
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <h1>Welcome to ReviewHub - Your place for honest book & movie reviews</h1>
+    </header>
+
+    <!--Navigation Bar-->
+    <nav>
+      <ul>
+        <li><a href="" class="navbar-brand">Page2Screen</a></li>
+        <div class="navbar-main">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="">Add a New Book</a></li>
+          <li><a href="">Add a New Movie</a></li>
+        </div>
+        <li style="float: right">
+          <a href="profile.html"
+            ><img
+              src="assets/images/profile_icon.png"
+              style="
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+                margin-right: 5px;
+              "
+            />Profile</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!--Main Content-->
+    <main>
+      <h1>Add New Title</h1>
+      <div class="add-new-container">
+        <!-- media selector -->
+        <!-- used to swap between book and movie forms -->
+        <!-- NOTE: only one will be visible at a time -->
+        <div class="form-row">
+          <label>This is a:</label>
+          <div>
+            <input
+              type="radio"
+              id="type-book"
+              name="mediaType"
+              value="book"
+              checked
+            />
+            <label for="type-book">Book</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="type-movie"
+              name="mediaType"
+              value="movie"
+            />
+            <label for="type-movie">Movie</label>
+          </div>
+        </div>
+
+        <!-- Book form -->
+        <form id="book-form" class="media-form">
+          <fieldset>
+            <legend>Add new book</legend>
+            <div class="form-row">
+              <label for="book-title">Title:</label>
+              <input
+                type="text"
+                id="book-title"
+                name="title"
+                placeholder="Enter title..."
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="book-year">Publication Year:</label>
+              <input
+                type="text"
+                id="book-year"
+                name="year"
+                placeholder="Enter year..."
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="book-isbn10"
+                >ISBN10: <span class="optional">(optional)</span></label
+              >
+              <input
+                type="text"
+                id="book-isbn10"
+                name="isbn10"
+                placeholder="Enter ISBN10..."
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="book-isbn13"
+                >ISBN13: <span class="optional">(optional)</span></label
+              >
+              <input
+                type="text"
+                id="book-isbn13"
+                name="isbn13"
+                placeholder="Enter ISBN13..."
+              />
+            </div>
+
+            <div class="form-actions" style="margin-top: 10px">
+              <button type="button">Cancel</button>
+              <button type="submit">Add Title</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- Movie form -->
+        <form id="movie-form" class="media-form">
+          <fieldset>
+            <legend>Add new movie</legend>
+            <div class="form-row">
+              <label for="movie-title">Title:</label>
+              <input
+                type="text"
+                id="movie-title"
+                name="title"
+                placeholder="Enter title..."
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="movie-year">Release Year:</label>
+              <input
+                type="text"
+                id="movie-year"
+                name="year"
+                placeholder="Enter year..."
+              />
+            </div>
+
+            <div class="form-actions" style="margin-top: 10px">
+              <button type="button">Cancel</button>
+              <button type="submit">Add Title</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
