@@ -177,6 +177,10 @@ body{
     font-size: 0.8em;
     color: #666;
 }
+.add-new-container .form-row input::placeholder {
+    font-style: italic;
+    color: #777;
+}
 .add-new-container .form-row > div {
     display: flex;
     gap: 12px;
