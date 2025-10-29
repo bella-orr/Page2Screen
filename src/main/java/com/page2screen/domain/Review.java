@@ -39,7 +39,11 @@ public class Review {
   @Column(nullable = false)
   private Integer likes = 0;
 
-  // Genereated persistent id if none exist and captures time of creation.
+  private OffsetDateTime createdAt;
+
+  private OffsetDateTime updatedAt;
+
+  // Generates persistent id if none exist and captures time of creation.
   @PrePersist
   private void prePersist() {
     if (id == null) {
@@ -51,8 +55,12 @@ public class Review {
     }
     updatedAt = now;
   }
-  
-  private OffsetDateTime updatedAt;
+
+  // Keep updatedAt current with each update
+  @PreUpdate
+  private void preUpdate() {
+    updatedAt = OffsetDataTime.now();
+  }
 
   // Getters and Setters
   public UUID getId() { return id; }
