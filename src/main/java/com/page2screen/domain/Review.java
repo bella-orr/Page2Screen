@@ -5,7 +5,9 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "reviews", uniqueConstraints = {
+@Table(name = "reviews", indexes = {
+  @Index(name = "idx_reviews_work_created", columnList = "work_id, created_at")
+}, uniqueConstraints = {
   @UniqueConstraint(name = "uq_work_author", columnNames = {"work_id", "author_id"})
 })
 public class Review {
