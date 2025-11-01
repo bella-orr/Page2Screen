@@ -45,7 +45,12 @@ public class Review {
 
   private OffsetDateTime updatedAt;
 
-  // Generates persistent id if none exist and captures time of creation.
+  /**
+  * Generates a persistent ID if none exists, and captures time of creation.
+  *
+  * @author Alicia D
+  * @since 10/29/2025
+  */
   @PrePersist
   private void prePersist() {
     if (id == null) {
@@ -58,7 +63,12 @@ public class Review {
     updatedAt = now;
   }
 
-  // Keep updatedAt current with each update
+  /**
+  * Keeps updatedAt current with each update to Review
+  *
+  * @author Alicia D
+  * @since 10/29/2025
+  */
   @PreUpdate
   private void preUpdate() {
     updatedAt = OffsetDataTime.now();
