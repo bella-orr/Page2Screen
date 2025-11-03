@@ -4,8 +4,139 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-
     <title>Add New Title</title>
+    <style>
+      /* Basic styling improvements */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-right: 20px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+      }
+
+      nav a.active {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-row {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      button[type="button"] {
+        background-color: #ccc;
+      }
+
+      /* Show/hide forms based on selection */
+      #movie-form {
+        display: none;
+      }
+
+      .optional {
+        font-weight: normal;
+        color: #888;
+      }
+
+      /* Radio buttons inline */
+      .form-row div {
+        display: inline-block;
+        margin-right: 15px;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bookRadio = document.getElementById("type-book");
+        const movieRadio = document.getElementById("type-movie");
+        const bookForm = document.getElementById("book-form");
+        const movieForm = document.getElementById("movie-form");
+
+        function toggleForms() {
+          if (bookRadio.checked) {
+            bookForm.style.display = "block";
+            movieForm.style.display = "none";
+          } else {
+            bookForm.style.display = "none";
+            movieForm.style.display = "block";
+          }
+        }
+
+        bookRadio.addEventListener("change", toggleForms);
+        movieRadio.addEventListener("change", toggleForms);
+
+        toggleForms(); // Initial toggle
+      });
+    </script>
   </head>
   <body>
     <!--Navigation Bar-->
@@ -16,47 +147,30 @@
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="#">Add a New Title</a></li>
         </div>
-        <li style="float: right">
-          <a href="profile.html"
-            ><img
+        <li style="margin-left:auto">
+          <a href="profile.html">
+            <img
               src="assets/images/profile_icon.png"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
+              style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;"
+            />
+            Profile
+          </a>
         </li>
       </ul>
     </nav>
+
     <!--Main Content-->
     <main>
       <h2>Add New Title</h2>
       <div class="add-new-container">
-        <!-- media selector -->
-        <!-- used to swap between book and movie forms -->
-        <!-- NOTE: only one will be visible at a time -->
         <div class="form-row">
           <label>This is a:</label>
           <div>
-            <input
-              type="radio"
-              id="type-book"
-              name="mediaType"
-              value="book"
-              checked
-            />
+            <input type="radio" id="type-book" name="mediaType" value="book" checked />
             <label for="type-book">Book</label>
           </div>
           <div>
-            <input
-              type="radio"
-              id="type-movie"
-              name="mediaType"
-              value="movie"
-            />
+            <input type="radio" id="type-movie" name="mediaType" value="movie" />
             <label for="type-movie">Movie</label>
           </div>
         </div>
@@ -67,59 +181,25 @@
             <legend>Add new book</legend>
             <div class="form-row">
               <label for="book-title">Title:</label>
-              <input
-                type="text"
-                id="book-title"
-                name="title"
-                placeholder="Enter title..."
-              />
+              <input type="text" id="book-title" name="title" placeholder="Enter title..." />
             </div>
-
             <div class="form-row">
               <label for="book-author">Author:</label>
-              <input
-                type="text"
-                id="book-author"
-                name="author"
-                placeholder="Enter author..."
-              />
+              <input type="text" id="book-author" name="author" placeholder="Enter author..." />
             </div>
-
             <div class="form-row">
               <label for="book-year">Publication Year:</label>
-              <input
-                type="text"
-                id="book-year"
-                name="year"
-                placeholder="Enter year..."
-              />
+              <input type="text" id="book-year" name="year" placeholder="Enter year..." />
             </div>
-
             <div class="form-row">
-              <label for="book-isbn10"
-                >ISBN10: <span class="optional">(optional)</span></label
-              >
-              <input
-                type="text"
-                id="book-isbn10"
-                name="isbn10"
-                placeholder="Enter ISBN10..."
-              />
+              <label for="book-isbn10">ISBN10: <span class="optional">(optional)</span></label>
+              <input type="text" id="book-isbn10" name="isbn10" placeholder="Enter ISBN10..." />
             </div>
-
             <div class="form-row">
-              <label for="book-isbn13"
-                >ISBN13: <span class="optional">(optional)</span></label
-              >
-              <input
-                type="text"
-                id="book-isbn13"
-                name="isbn13"
-                placeholder="Enter ISBN13..."
-              />
+              <label for="book-isbn13">ISBN13: <span class="optional">(optional)</span></label>
+              <input type="text" id="book-isbn13" name="isbn13" placeholder="Enter ISBN13..." />
             </div>
-
-            <div class="form-actions" style="margin-top: 10px">
+            <div class="form-actions">
               <button type="button">Cancel</button>
               <button type="submit">Add Book</button>
             </div>
@@ -132,35 +212,17 @@
             <legend>Add new movie</legend>
             <div class="form-row">
               <label for="movie-title">Title:</label>
-              <input
-                type="text"
-                id="movie-title"
-                name="title"
-                placeholder="Enter title..."
-              />
+              <input type="text" id="movie-title" name="title" placeholder="Enter title..." />
             </div>
-
             <div class="form-row">
               <label for="movie-director">Director:</label>
-              <input
-                type="text"
-                id="movie-director"
-                name="director"
-                placeholder="Enter director..."
-              />
+              <input type="text" id="movie-director" name="director" placeholder="Enter director..." />
             </div>
-
             <div class="form-row">
               <label for="movie-year">Release Year:</label>
-              <input
-                type="text"
-                id="movie-year"
-                name="year"
-                placeholder="Enter year..."
-              />
+              <input type="text" id="movie-year" name="year" placeholder="Enter year..." />
             </div>
-
-            <div class="form-actions" style="margin-top: 10px">
+            <div class="form-actions">
               <button type="button">Cancel</button>
               <button type="submit">Add Movie</button>
             </div>
