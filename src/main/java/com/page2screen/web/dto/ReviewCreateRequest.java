@@ -4,18 +4,32 @@ import jakarta.validation.constraints.*;
 import java.util.UUID;
 
 public class ReviewCreateRequest {
-  @NotNull
+/**
+ * Request DTO for creating a new review.
+ * Validates all required fields and enforces size constraints.
+ */
+public class ReviewCreateRequest {
+  @NotNull(message = "Author ID is required")
   private UUID authorId;
-  @NotBlank
+    
+  @NotBlank(message = "Author display name is required")
+  @Size(max = 100, message = "Author display name must not exceed 100 characters")
   private String authorDisplayName;
-  @NotNull
-  @Min(1)
-  @Max(10)
+    
+  @NotNull(message = "Rating is required")
+  @Min(value = 1, message = "Rating must be between 1 and 10")
+  @Max(value = 10, message = "Rating must be between 1 and 10")
   private Integer rating;
-  @NotBlank
+    
+  @NotBlank(message = "Title is required")
+  @Size(max = 255, message = "Title must not exceed 255 characters")
   private String title;
-  @NotBlank
+    
+  @NotBlank(message = "Review body is required")
+  @Size(max = 5000, message = "Review body must not exceed 5000 characters")
   private String body;
+    
+  private Boolean containsSpoilers = false;
   private Boolean containsSpoilers = false;
 
   public UUID getAuthorId() { return authorId; }
