@@ -4,12 +4,16 @@ import com.page2screen.domain.MediaType;
 import jakarta.validation.constraints.*;
 
 public class WorkCreateRequest {
-  @NotBlank
+  @NotBlank(message = "Title is required")
+  @Size(max = 255, message = "Title must not exceed 255 characters")
   private String title;
-  @NotNull
+    
+  @NotNull(message = "Media type is required")
   private MediaType mediaType;
-  @NotNull
-  @Min(1800)
+  
+  @NotNull(message = "Release year is required")
+  @Min(value = 1800, message = "Release year must be 1800 or later")
+  @Max(value = 2100, message = "Release year must be 2100 or earlier")
   private Integer releaseYear;
 
   public String getTitle() { return title; }
