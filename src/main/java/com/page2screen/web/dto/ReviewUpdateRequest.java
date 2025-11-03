@@ -16,6 +16,8 @@ public class ReviewUpdateRequest {
   @Size(max = 5000, message = "Review body must not exceed 5000 characters")
   private String body;
 
+  private Boolean containsSpoilers = false;
+
   public Integer getRating() { return rating; }
   public void setRating(Integer rating) { this.rating = rating; }
   public String getTitle() { return title; }
