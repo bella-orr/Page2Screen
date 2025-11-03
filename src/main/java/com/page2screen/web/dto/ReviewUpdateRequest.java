@@ -3,15 +3,18 @@ package com.page2screen.web.dto;
 import jakarta.validation.constraints.*;
 
 public class ReviewUpdateRequest {
-  @NotNull
-  @Min(1)
-  @Max(10)
+  @NotNull(message = "Rating is required")
+  @Min(value = 1, message = "Rating must be between 1 and 10")
+  @Max(value = 10, message = "Rating must be between 1 and 10")
   private Integer rating;
-  @NotBlank
+    
+  @NotBlank(message = "Title is required")
+  @Size(max = 255, message = "Title must not exceed 255 characters")
   private String title;
-  @NotBlank
+    
+  @NotBlank(message = "Review body is required")
+  @Size(max = 5000, message = "Review body must not exceed 5000 characters")
   private String body;
-  private Boolean containsSpoilers = false;
 
   public Integer getRating() { return rating; }
   public void setRating(Integer rating) { this.rating = rating; }
