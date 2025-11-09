@@ -141,3 +141,6 @@ replay_pid*
 # Project build outputs
 .gradle/
 build/
+
+gradle-*/
+gradle-*-bin.zip
