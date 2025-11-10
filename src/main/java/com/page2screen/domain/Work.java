@@ -4,28 +4,39 @@ import jakarta.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.*;
 
+/**
+ * Entity representing a work of media (book or movie) that can be reviewed.
+ */
 @Entity
 @Table(name = "works")
 public class Work {
-  @Id
-  @Column(nullable = false, updatable = false)
-  private UUID id;
+    @Id
+    @Column(nullable = false, updatable = false)
+    private UUID id;
 
-  @Column(nullable = false)
-  private String title;
+    @NotNull
+    @Size(max = 255)
+    @Column(nullable = false, length = 255)  // ✓ Explicit database length
+    private String title;
 
-  @Enumerated(EnumType.STRING)
-  @Column(nullable = false)
-  private MediaType mediaType;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)  // ✓ Enough for enum values
+    private MediaType mediaType;
 
-  @Column(nullable = false)
-  private Integer releaseYear;
+    @NotNull
+    @Min(1800)
+    @Column(nullable = false)
+    private Integer releaseYear;
 
-  private OffsetDateTime createdAt;
-  private OffsetDateTime updatedAt;
+    @Column(nullable = false)
+    private OffsetDateTime createdAt;
+    
+    @Column(nullable = false)
+    private OffsetDateTime updatedAt;
 
-  @OneToMany(mappedBy = "work", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Review> reviews = new ArrayList<>();
+    @OneToMany(mappedBy = "work", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
 
   public UUID getId() { return id; }
   public void setId(UUID id) { this.id = id; }
