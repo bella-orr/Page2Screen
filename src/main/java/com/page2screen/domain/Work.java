@@ -34,7 +34,7 @@ public class Work {
   public MediaType getMediaType() { return mediaType; }
   public void setMediaType(MediaType mediaType) { this.mediaType = mediaType; }
   public Integer getReleaseYear() { return releaseYear; }
-  public void setReleaseYear(Integer releaseYear) { this.releaseYear = releaseYear; }
+  public void setReleaseYear(Integer ReleaseYear) { this.ReleaseYear = ReleaseYear; }
   public OffsetDateTime getCreatedAt() { return createdAt; }
   public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
   public OffsetDateTime getUpdatedAt() { return updatedAt; }
