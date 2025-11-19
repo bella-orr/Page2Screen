@@ -69,7 +69,7 @@ public class Review {
   public UUID getAuthorId() { return authorId; }
   public void setAuthorId(UUID authorId) { this.authorId = authorId; }
   public String getAuthorDisplayName() { return authorDisplayName; }
-  public void setAuthorDisplayName(String AuthorDisplayName) { this.AuthorDisplayName = AuthorDisplayName; }
+  public void setAuthorDisplayName(String authorDisplayName) { this.authorDisplayName = authorDisplayName; }
   public Integer getRating() { return rating; }
   public void setRating(Integer rating) { this.rating = rating; }
   public String getTitle() { return title; }
@@ -85,4 +85,3 @@ public class Review {
   public OffsetDateTime getUpdatedAt() { return updatedAt; }
   public void setUpdatedAt(OffsetDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
-

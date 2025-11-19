@@ -34,13 +34,12 @@ public class ReviewController {
 
   @PutMapping("/reviews/{reviewId}")
   public ReviewResponse update(@PathVariable UUID reviewId, @Valid @RequestBody ReviewUpdateRequest req) {
-    return service.updateReview(ReviewId, req);
+    return service.updateReview(reviewId, req);
   }
 
   @DeleteMapping("/reviews/{reviewId}")
   public ResponseEntity<Void> delete(@PathVariable UUID reviewId) {
-    service.deleteReview(ReviewId);
+    service.deleteReview(reviewId);
     return ResponseEntity.noContent().build();
   }
 }
-

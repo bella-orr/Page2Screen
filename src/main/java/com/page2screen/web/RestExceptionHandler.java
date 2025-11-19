@@ -5,7 +5,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.HashMap;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
@@ -20,7 +19,12 @@ public class RestExceptionHandler {
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<Map<String, String>> badRequest(MethodArgumentNotValidException e) {
-    return ResponseEntity.badRequest().body(Map.of("error", "validation failed"));
+  public ResponseEntity<Map<String, Object>> badRequest(MethodArgumentNotValidException e) {
+    Map<String, String> errors = new HashMap<>();
+    e.getBindingResult().getFieldErrors().forEach(error ->
+        errors.put(error.getField(), error.getDefaultMessage())
+    );
+    return ResponseEntity.badRequest()
+        .body(Map.of("error", "Validation failed", "details", errors));
   }
 }
