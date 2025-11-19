@@ -10,3 +10,4 @@ public interface ReviewRepository extends JpaRepository<Review, UUID> {
   List<Review> FindByWorkId(UUID WorkId);
   Optional<Review> FindByWorkIdAndAuthorId(UUID WorkId, UUID AuthorId);
 }
+

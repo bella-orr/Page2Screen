@@ -1,9 +1,17 @@
 package com.page2screen.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+/**
+ * Entity representing a user review of a work (book or movie).
+ * Enforces business rule: one review per author per work via unique constraint.
+ */
 @Entity
 @Table(name = "reviews", uniqueConstraints = {
   @UniqueConstraint(name = "uq_work_author", columnNames = {"work_id", "author_id"})
@@ -20,17 +28,26 @@ public class Review {
   @Column(name = "author_id", nullable = false)
   private UUID authorId;
 
-  @Column(nullable = false)
+  @NotNull
+  @Size(max = 100)
+  @Column(nullable = false, length = 100)  // explicit database length
   private String authorDisplayName;
 
+  @NotNull
+  @Min(1)
+  @Max(10)
   @Column(nullable = false)
   private Integer rating;
 
-  @Column(nullable = false)
+  @NotNull
+  @Size(max = 255)
+  @Column(nullable = false, length = 255)  // explicit database length
   private String title;
 
+  @NotNull
+  @Size(max = 5000)
   @Lob
-  @Column(nullable = false)
+  @Column(nullable = false, length = 5000)  // practical limit even for LOB
   private String body;
 
   @Column(nullable = false)
@@ -39,7 +56,10 @@ public class Review {
   @Column(nullable = false)
   private Integer likes = 0;
 
+  @Column(nullable = false)
   private OffsetDateTime createdAt;
+
+  @Column(nullable = false)
   private OffsetDateTime updatedAt;
 
   public UUID getId() { return id; }
@@ -65,3 +85,4 @@ public class Review {
   public OffsetDateTime getUpdatedAt() { return updatedAt; }
   public void setUpdatedAt(OffsetDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
+

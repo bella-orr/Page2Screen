@@ -1,15 +1,18 @@
 # syntax=docker/dockerfile:1.7-labs
 
-ARG GRADLE_IMAGE=gradle:9.1.0-jdk25
-ARG RUNTIME_IMAGE=eclipse-temurin:25-jre
+ARG GRADLE_IMAGE=eclipse-temurin:21-jdk
+ARG RUNTIME_IMAGE=eclipse-temurin:21-jre
 
 FROM ${GRADLE_IMAGE} AS build
 WORKDIR /workspace/app
 
+COPY gradlew gradlew.bat ./
+COPY gradle gradle
 COPY build.gradle settings.gradle ./
 COPY src ./src
 
-RUN gradle bootJar --no-daemon
+RUN chmod +x gradlew \
+  && ./gradlew --no-daemon bootJar
 
 FROM ${RUNTIME_IMAGE} AS runtime
 WORKDIR /app
