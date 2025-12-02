@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - EC-build-deployment-fix
+      - EC-hello-world-deployment
   workflow_dispatch:
 
 jobs:
