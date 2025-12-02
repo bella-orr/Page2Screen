@@ -1,36 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 
     <title>Title Details</title>
   </head>
   <body>
     <!--Navigation Bar-->
-    <nav>
-      <ul>
-        <li><a href="index.html" class="navbar-brand">Page2Screen</a></li>
-        <div class="navbar-main">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="add-new.html">Add a New Title</a></li>
-        </div>
-        <li style="float: right">
-          <a href="profile.html"
-            ><img
-              src="assets/images/profile_icon.png"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
+
     <!--Main Content-->
     <main>
       <h2>Title Details</h2>
