@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - EC-build-deployment-fix
   workflow_dispatch:
 
 jobs:
