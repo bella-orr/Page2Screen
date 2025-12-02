@@ -30,3 +30,6 @@ tasks.named("bootRun").configure {
 tasks.named("resolveMainClassName").configure {
   enabled = false
 }
+tasks.named("jar").configure {
+  enabled = false
+}
