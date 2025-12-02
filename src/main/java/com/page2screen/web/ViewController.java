@@ -27,4 +27,9 @@ public class ViewController {
     public String editTitle() {
         return "edit-title";
     }
+
+    @GetMapping("/title-detail")
+    public String titleDetail() {
+        return "title-detail";
+    }
 }
