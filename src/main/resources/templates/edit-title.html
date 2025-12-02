@@ -9,28 +9,7 @@
   </head>
   <body>
     <!--Navigation Bar-->
-    <nav>
-      <ul>
-        <li><a href="" class="navbar-brand">Page2Screen</a></li>
-        <div class="navbar-main">
-          <li><a th:href="@{/}" class="active">Home</a></li>
-          <li><a th:href="@{/add-new}">Add a New Title</a></li>
-        </div>
-        <li style="float: right">
-          <a th:href="@{/profile}"
-            ><img
-              th:src="@{/images/profile_icon.png}"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
     <!--Main Content-->
     <main>
       <h2>Edit Title</h2>
