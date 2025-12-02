@@ -144,4 +144,4 @@ build/
 
 gradle-*/
 gradle-*-bin.zip
-
+bin/*

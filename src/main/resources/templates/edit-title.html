@@ -1,77 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 
-    <title>Add New Title</title>
+    <title>Edit Title</title>
   </head>
   <body>
     <!--Navigation Bar-->
-    <nav>
-      <ul>
-        <li><a href="" class="navbar-brand">Page2Screen</a></li>
-        <div class="navbar-main">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="#">Add a New Title</a></li>
-        </div>
-        <li style="float: right">
-          <a href="profile.html"
-            ><img
-              src="assets/images/profile_icon.png"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
     <!--Main Content-->
     <main>
-      <h2>Add New Title</h2>
+      <h2>Edit Title</h2>
       <div class="add-new-container">
-        <!-- media selector -->
-        <!-- used to swap between book and movie forms -->
-        <!-- NOTE: only one will be visible at a time -->
-        <div class="form-row">
-          <label>This is a:</label>
-          <div>
-            <input
-              type="radio"
-              id="type-book"
-              name="mediaType"
-              value="book"
-              checked
-            />
-            <label for="type-book">Book</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="type-movie"
-              name="mediaType"
-              value="movie"
-            />
-            <label for="type-movie">Movie</label>
-          </div>
-        </div>
+        <!-- no media selector since the type will be passed in -->
+        <!-- 
+        TODO: This should be fetching the passed in title 
+        and using it to populate the different values for what is being edited.
+        The placeholders should have their regular placeholder text and have the `value`
+        set to the title's existing value.
+        -->
 
         <!-- Book form -->
         <form id="book-form" class="media-form">
           <fieldset>
-            <legend>Add new book</legend>
+            <legend>Edit book</legend>
             <div class="form-row">
               <label for="book-title">Title:</label>
               <input
                 type="text"
                 id="book-title"
                 name="title"
-                placeholder="Enter title..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -81,7 +42,7 @@
                 type="text"
                 id="book-author"
                 name="author"
-                placeholder="Enter author..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -91,7 +52,7 @@
                 type="text"
                 id="book-year"
                 name="year"
-                placeholder="Enter year..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -103,7 +64,7 @@
                 type="text"
                 id="book-isbn10"
                 name="isbn10"
-                placeholder="Enter ISBN10..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -115,13 +76,13 @@
                 type="text"
                 id="book-isbn13"
                 name="isbn13"
-                placeholder="Enter ISBN13..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
               <button type="button">Cancel</button>
-              <button type="submit">Add Book</button>
+              <button type="submit">Update Book</button>
             </div>
           </fieldset>
         </form>
@@ -129,14 +90,14 @@
         <!-- Movie form -->
         <form id="movie-form" class="media-form">
           <fieldset>
-            <legend>Add new movie</legend>
+            <legend>Edit movie</legend>
             <div class="form-row">
               <label for="movie-title">Title:</label>
               <input
                 type="text"
                 id="movie-title"
                 name="title"
-                placeholder="Enter title..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -146,7 +107,7 @@
                 type="text"
                 id="movie-director"
                 name="director"
-                placeholder="Enter director..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
@@ -156,13 +117,13 @@
                 type="text"
                 id="movie-year"
                 name="year"
-                placeholder="Enter year..."
+                placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
               <button type="button">Cancel</button>
-              <button type="submit">Add Movie</button>
+              <button type="submit">Update Movie</button>
             </div>
           </fieldset>
         </form>
