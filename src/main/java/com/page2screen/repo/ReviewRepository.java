@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ReviewRepository extends JpaRepository<Review, UUID> {
-  List<Review> FindByWorkId(UUID WorkId);
-  Optional<Review> FindByWorkIdAndAuthorId(UUID WorkId, UUID AuthorId);
+  List<Review> findByWorkId(UUID workId);
+  Optional<Review> findByWorkIdAndAuthorId(UUID workId, UUID authorId);
 }
