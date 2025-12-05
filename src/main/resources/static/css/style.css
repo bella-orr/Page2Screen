@@ -238,8 +238,30 @@ body{
     flex-grow: 3;
 }
 
-.your-review-container{
+.your-review-container {
     border: 1px solid #b0b0b0;
     padding: 10px;
     background-color: #f9f9f9;
+}
+
+.your-review-container .add-review {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.your-review-container .view-review {
+    padding: 15px;
+}
+.your-review-container .view-review .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.your-review-container .view-review .review-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }

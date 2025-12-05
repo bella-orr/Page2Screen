@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Thymeleaf fragment for the site navigation -->
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <!-- add review -->
+    <div th:fragment="add-review">
+      <div class="add-review">
+        <div>You haven't reviewed this Title!</div>
+        <br />
+        <button type="button">Add a Review</button>
+      </div>
+    </div>
+    <!-- view review -->
+    <div th:fragment="view-review">
+      <div class="view-review">
+        <div class="review-header">
+          <h2>Review Title</h2>
+          <div>
+            <img class="star" th:src="@{/images/star.png}" />
+            <img class="star" th:src="@{/images/star.png}" />
+            <img class="star" th:src="@{/images/star.png}" />
+            <img class="star" th:src="@{/images/star.png}" />
+            <img class="star" th:src="@{/images/star.png}" />
+          </div>
+        </div>
+        <p class="review-content">
+          Review content goes here. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
+          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
+          metus bibendum egestas. Iaculis massa nisi malesuada lacinia integer
+          nunc posuere.
+        </p>
+        <div class="review-footer">
+          <button type="button">Edit Review</button>
+          <button type="button">Delete Review</button>
+        </div>
+      </div>
+    </div>
+    <!-- edit review -->
+    <div th:fragment="edit-review"></div>
+  </body>
+</html>
