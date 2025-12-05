@@ -1,5 +1,32 @@
+@baseUrl = https://page2screen.azurewebsites.net
+# @baseUrl = http://localhost:8080
+
+### List books
+GET {{baseUrl}}/api/books
+
+### Create a book
+POST {{baseUrl}}/api/books
+Content-Type: application/json
+
+{
+  "title": "Dune",
+  "releaseYear": 1965
+}
+
+### List movies
+GET {{baseUrl}}/api/movies
+
+### Create a movie
+POST {{baseUrl}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "Arrival",
+  "releaseYear": 2016
+}
+
 ### Create a work
-POST http://localhost:8080/api/works
+POST {{baseUrl}}/api/works
 Content-Type: application/json
 
 {
@@ -9,10 +36,10 @@ Content-Type: application/json
 }
 
 ### Get a work
-GET http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9
+GET {{baseUrl}}/api/works/283d50b0-9a90-4f6e-8d2b-2b574ee44290
 
 ### Create a review
-POST http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9/reviews
+POST {{baseUrl}}/api/works/283d50b0-9a90-4f6e-8d2b-2b574ee44290/reviews
 Content-Type: application/json
 
 {
@@ -25,10 +52,10 @@ Content-Type: application/json
 }
 
 ### List reviews
-GET http://localhost:8080/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9/reviews
+GET {{baseUrl}}/api/works/d27addad-19b5-4b6a-b94c-f0a931e89bc9/reviews
 
 ### Update review
-PUT http://localhost:8080/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f
+PUT {{baseUrl}}/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f
 Content-Type: application/json
 
 {
@@ -39,4 +66,4 @@ Content-Type: application/json
 }
 
 ### Delete review
-DELETE http://localhost:8080/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f
+DELETE {{baseUrl}}/api/reviews/226c54ac-9c5a-40e9-adbf-f21730c98b4f

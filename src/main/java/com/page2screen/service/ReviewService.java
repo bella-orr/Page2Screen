@@ -5,6 +5,7 @@ import com.page2screen.domain.Work;
 import com.page2screen.domain.MediaType;
 import com.page2screen.repo.ReviewRepository;
 import com.page2screen.repo.WorkRepository;
+import com.page2screen.service.ResponseMapper;
 import com.page2screen.web.dto.ReviewCreateRequest;
 import com.page2screen.web.dto.ReviewUpdateRequest;
 import com.page2screen.web.dto.ReviewResponse;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class ReviewService {
   private final WorkRepository workRepo;
   private final ReviewRepository reviewRepo;
+  private final ResponseMapper mapper;
 
   private static final String WORK_NOT_FOUND        = "Work not found";
   private static final String REVIEW_NOT_FOUND      = "Review not found";
@@ -27,9 +29,10 @@ public class ReviewService {
   private static final String TITLE_NULL_OR_EMPTY   = "Title cannot be NULL or empty";
   private static final String REQUEST_CANNOT_BE_NULL = "Request cannot be NULL";
 
-  public ReviewService(WorkRepository workRepo, ReviewRepository reviewRepo) {
+  public ReviewService(WorkRepository workRepo, ReviewRepository reviewRepo, ResponseMapper mapper) {
     this.workRepo = workRepo;
     this.reviewRepo = reviewRepo;
+    this.mapper = mapper;
   }
 
   @Transactional(readOnly = true)
@@ -40,7 +43,7 @@ public class ReviewService {
   @Transactional(readOnly = true)
   public WorkResponse getWorkDetail(UUID workId) {
     Work work = workRepo.findWithReviewsById(workId).orElseThrow(() -> new IllegalArgumentException(WORK_NOT_FOUND));
-    return toWorkResponse(work);
+    return mapper.toWorkResponse(work);
   }
 
   @Transactional
@@ -57,13 +60,13 @@ public class ReviewService {
     w.setCreatedAt(OffsetDateTime.now());
     w.setUpdatedAt(w.getCreatedAt());
     Work saved = workRepo.save(w);
-    return toWorkResponse(saved);
+    return mapper.toWorkResponse(saved);
   }
 
   @Transactional(readOnly = true)
   public List<ReviewResponse> listReviews(UUID workId) {
     return reviewRepo.findByWorkId(workId).stream()
-        .map(review -> toReviewResponse(review, workId))
+        .map(mapper::toReviewResponse)
         .toList();
   }
 
@@ -86,7 +89,7 @@ public class ReviewService {
     r.setCreatedAt(OffsetDateTime.now());
     r.setUpdatedAt(r.getCreatedAt());
     Review saved = reviewRepo.save(r);
-    return toReviewResponse(saved, workId);
+    return mapper.toReviewResponse(saved);
   }
 
   @Transactional
@@ -102,52 +105,12 @@ public class ReviewService {
     r.setContainsSpoilers(Boolean.TRUE.equals(req.getContainsSpoilers()));
     r.setUpdatedAt(OffsetDateTime.now());
     Review saved = reviewRepo.save(r);
-    UUID workId = saved.getWork() != null ? saved.getWork().getId() : null;
-    return toReviewResponse(saved, workId);
+    return mapper.toReviewResponse(saved);
   }
 
   @Transactional
   public void deleteReview(UUID reviewId) {
     if (!reviewRepo.existsById(reviewId)) throw new IllegalArgumentException(REVIEW_NOT_FOUND);
     reviewRepo.deleteById(reviewId);
-  }
-
-  private WorkResponse toWorkResponse(Work work) {
-    List<ReviewResponse> reviews = work.getReviews().stream()
-        .map(review -> toReviewResponse(review, work.getId()))
-        .toList();
-    return new WorkResponse(
-        work.getId(),
-        work.getTitle(),
-        work.getMediaType(),
-        work.getReleaseYear(),
-        work.getCreatedAt(),
-        work.getUpdatedAt(),
-        reviews
-    );
-  }
-
-  private ReviewResponse toReviewResponse(Review review, UUID workId) {
-    UUID resolvedWorkId = workId != null
-        ? workId
-        : (review.getWork() != null ? review.getWork().getId() : null);
-    int likes = review.getLikes() != null ? review.getLikes() : 0;
-    boolean containsSpoilers = Boolean.TRUE.equals(review.getContainsSpoilers());
-    ReviewResponse.AuthorSummary author = new ReviewResponse.AuthorSummary(
-        review.getAuthorId(),
-        review.getAuthorDisplayName()
-    );
-    return new ReviewResponse(
-        review.getId(),
-        resolvedWorkId,
-        author,
-        review.getRating(),
-        review.getTitle(),
-        review.getBody(),
-        containsSpoilers,
-        likes,
-        review.getCreatedAt(),
-        review.getUpdatedAt()
-    );
   }
 }
