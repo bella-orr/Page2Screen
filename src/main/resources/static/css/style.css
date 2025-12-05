@@ -143,6 +143,14 @@ body {
 .star {
   width: 25px;
   height: 25px;
+  filter: grayscale(100%) opacity(0.6);
+  transition: filter 0.12s ease, opacity 0.12s ease;
+  vertical-align: middle;
+}
+
+.star.highlighted {
+  filter: none;
+  opacity: 1;
 }
 
 /* Add New Title Design */

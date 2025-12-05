@@ -14,13 +14,7 @@
       <div class="view-review">
         <div class="review-header">
           <h2>Review Title</h2>
-          <div>
-            <img class="star" th:src="@{/images/star.png}" />
-            <img class="star" th:src="@{/images/star.png}" />
-            <img class="star" th:src="@{/images/star.png}" />
-            <img class="star" th:src="@{/images/star.png}" />
-            <img class="star" th:src="@{/images/star.png}" />
-          </div>
+          <div th:replace="fragments/stars :: review-stars(3)"></div>
         </div>
         <p class="review-content">
           Review content goes here. Lorem ipsum dolor sit amet consectetur

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <body>
-    <div th:fragment="review-stars">
-      <div>
-        <img class="star" th:src="@{/images/star.png}" />
-        <img class="star" th:src="@{/images/star.png}" />
-        <img class="star" th:src="@{/images/star.png}" />
-        <img class="star" th:src="@{/images/star.png}" />
-        <img class="star" th:src="@{/images/star.png}" />
+    <!--
+      Fragment: review-stars
+      Usage examples:
+        - Static: th:replace="fragments/stars :: review-stars(3)"
+        - From model: th:replace="fragments/stars :: review-stars(${rating})"
+      Accepts one parameter: `rating` (number 0-5). Null defaults to 0.
+    -->
+    <div th:fragment="review-stars (rating)">
+      <div class="review-stars" th:with="r=${rating != null ? rating : 0}">
+        <span th:each="i : ${#numbers.sequence(1,5)}">
+          <img
+            class="star"
+            th:classappend="${i <= r} ? ' highlighted' : ''"
+            th:src="@{/images/star.png}"
+          />
+        </span>
       </div>
     </div>
   </body>
