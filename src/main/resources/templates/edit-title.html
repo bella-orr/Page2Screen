@@ -1,36 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 
     <title>Edit Title</title>
   </head>
   <body>
     <!--Navigation Bar-->
-    <nav>
-      <ul>
-        <li><a href="" class="navbar-brand">Page2Screen</a></li>
-        <div class="navbar-main">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="add-new.html">Add a New Title</a></li>
-        </div>
-        <li style="float: right">
-          <a href="profile.html"
-            ><img
-              src="assets/images/profile_icon.png"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
     <!--Main Content-->
     <main>
       <h2>Edit Title</h2>
@@ -55,7 +34,6 @@
                 name="title"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -66,7 +44,6 @@
                 name="author"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -77,7 +54,6 @@
                 name="year"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -90,7 +66,6 @@
                 name="isbn10"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -103,7 +78,6 @@
                 name="isbn13"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
@@ -125,7 +99,6 @@
                 name="title"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -136,7 +109,6 @@
                 name="director"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -147,7 +119,6 @@
                 name="year"
                 placeholder="TODO: REPLACE WITH EXISTING VALUE"
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
@@ -158,6 +129,5 @@
         </form>
       </div>
     </main>
-    <script src="review-validation.js"></script>
   </body>
 </html>

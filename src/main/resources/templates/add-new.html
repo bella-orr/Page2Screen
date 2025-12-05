@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <title>Add New Title</title>
+  </head>
+  <body>
+    <!--Navigation Bar--><!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 
     <title>Add New Title</title>
   </head>
   <body>
     <!--Navigation Bar-->
-    <nav>
-      <ul>
-        <li><a href="" class="navbar-brand">Page2Screen</a></li>
-        <div class="navbar-main">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#" class="active">Add a New Title</a></li>
-        </div>
-        <li style="float: right">
-          <a href="profile.html"
-            ><img
-              src="assets/images/profile_icon.png"
-              style="
-                width: 20px;
-                height: 20px;
-                vertical-align: middle;
-                margin-right: 5px;
-              "
-            />Profile</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <div th:replace="fragments/nav :: navbar"></div>
     <!--Main Content-->
     <main>
       <h2>Add New Title</h2>
@@ -73,7 +62,6 @@
                 name="title"
                 placeholder="Enter title..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -84,7 +72,6 @@
                 name="author"
                 placeholder="Enter author..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -95,7 +82,6 @@
                 name="year"
                 placeholder="Enter year..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -108,7 +94,6 @@
                 name="isbn10"
                 placeholder="Enter ISBN10..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -121,7 +106,6 @@
                 name="isbn13"
                 placeholder="Enter ISBN13..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
@@ -143,7 +127,6 @@
                 name="title"
                 placeholder="Enter title..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -154,7 +137,6 @@
                 name="director"
                 placeholder="Enter director..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-row">
@@ -165,7 +147,6 @@
                 name="year"
                 placeholder="Enter year..."
               />
-              <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-actions" style="margin-top: 10px">
@@ -176,6 +157,5 @@
         </form>
       </div>
     </main>
-    <script src="review-validation.js"></script>
   </body>
 </html>
