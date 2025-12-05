@@ -203,3 +203,15 @@ body{
     color: #fff;
     border-color: #2791f5;
 }
+
+/* Validation error styles */
+.error-message {
+    color: #c62828;
+    font-size: 0.9em;
+    margin-top: 6px;
+    display: block;
+}
+.input-error {
+    border-color: #c62828 !important;
+    box-shadow: 0 0 0 2px rgba(198,40,40,0.06);
+}
