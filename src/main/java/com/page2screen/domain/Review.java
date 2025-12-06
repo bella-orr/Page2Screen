@@ -5,7 +5,9 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "reviews", uniqueConstraints = {
+@Table(name = "reviews", indexes = {
+  @Index(name = "idx_reviews_work_created", columnList = "work_id, created_at")
+}, uniqueConstraints = {
   @UniqueConstraint(name = "uq_work_author", columnNames = {"work_id", "author_id"})
 })
 public class Review {
@@ -40,28 +42,69 @@ public class Review {
   private Integer likes = 0;
 
   private OffsetDateTime createdAt;
+
   private OffsetDateTime updatedAt;
 
+  /**
+  * Generates a persistent ID if none exists, and captures time of creation.
+  *
+  * @author Alicia D
+  * @since 10/29/2025
+  */
+  @PrePersist
+  private void prePersist() {
+    if (id == null) {
+      id = UUID.randomUUID();
+    }
+    OffsetDataTime now = OffsetDataTime.now();
+    if (createdAt == null) {
+      createdAt = now;
+    }
+    updatedAt = now;
+  }
+
+  /**
+  * Keeps updatedAt current with each update to Review
+  *
+  * @author Alicia D
+  * @since 10/29/2025
+  */
+  @PreUpdate
+  private void preUpdate() {
+    updatedAt = OffsetDataTime.now();
+  }
+
+  // Getters and Setters
   public UUID getId() { return id; }
   public void setId(UUID id) { this.id = id; }
+  
   public Work getWork() { return work; }
   public void setWork(Work work) { this.work = work; }
+  
   public UUID getAuthorId() { return authorId; }
   public void setAuthorId(UUID authorId) { this.authorId = authorId; }
+  
   public String getAuthorDisplayName() { return authorDisplayName; }
   public void setAuthorDisplayName(String authorDisplayName) { this.authorDisplayName = authorDisplayName; }
+  
   public Integer getRating() { return rating; }
   public void setRating(Integer rating) { this.rating = rating; }
+  
   public String getTitle() { return title; }
   public void setTitle(String title) { this.title = title; }
+  
   public String getBody() { return body; }
   public void setBody(String body) { this.body = body; }
+  
   public Boolean getContainsSpoilers() { return containsSpoilers; }
   public void setContainsSpoilers(Boolean containsSpoilers) { this.containsSpoilers = containsSpoilers; }
+  
   public Integer getLikes() { return likes; }
   public void setLikes(Integer likes) { this.likes = likes; }
+  
   public OffsetDateTime getCreatedAt() { return createdAt; }
   public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
+  
   public OffsetDateTime getUpdatedAt() { return updatedAt; }
   public void setUpdatedAt(OffsetDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
