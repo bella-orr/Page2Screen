@@ -21,10 +21,10 @@
           alt="Profile Icon"
           class="profile-icon"
         />
-        <h2 class="profile-username">$Username</h2>
+        <h2 class="profile-username" th:text="${session.username}"></h2>
       </div>
       <div class="reviewstitle">
-        <h2>User's Most Recent Reviews</h2>
+        <h2>Your Most Recent Reviews</h2>
       </div>
       <!--Review Cards-->
       <div class="reviews-container">
@@ -74,5 +74,8 @@
         </div>
       </div>
     </main>
+    <form method="post" th:action="@{/delete-account}" style="margin-top:32px; text-align:center;">
+      <button type="submit" style="background:#c00; color:#fff; padding:8px 24px; border:none; border-radius:4px;">Delete Account</button>
+    </form>
   </body>
 </html>

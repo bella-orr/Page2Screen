@@ -1,6 +1,6 @@
 // Validation for add/edit title forms.
 document.addEventListener('DOMContentLoaded', function () {
-  const forms = document.querySelectorAll('.review-form, .media-form');
+  const forms = document.querySelectorAll('.review-form, .media-form, .auth-form');
 
   forms.forEach((form) => {
     // Helper to find elements by name within the form
@@ -31,6 +31,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (ev) {
       let valid = true;
+
+      // Login/Sign up: validate credentials
+      if (form.classList.contains('auth-form')) {
+        const isSignup = form.id && form.id.toLowerCase().includes('signup');
+        const username = find('username');
+        const password = find('password');
+        const passwordConfirm = find('passwordConfirm');
+
+        if (username) {
+          if (!username.value || username.value.length < 3) {
+            showError(username, 'Username must be at least 3 characters.');
+            valid = false;
+          }
+        }
+        if (password) {
+          if (!password.value || password.value.length < 8) {
+            showError(password, 'Password must be at least 8 characters.');
+            valid = false;
+          }
+        }
+        if (isSignup && passwordConfirm) {
+          if (!passwordConfirm.value || passwordConfirm.value !== (password ? password.value : '')) {
+            showError(passwordConfirm, 'Passwords do not match.');
+            valid = false;
+          }
+        }
+        // For auth forms: when valid, allow the form to submit to the server (no client-side redirect)
+        if (valid) {
+          return; // allow normal submission
+        }
+      }
 
       // If this is a media form (add/edit title): validate visible form fields
       if (form.classList.contains('media-form')) {

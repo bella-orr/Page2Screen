@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Login / Sign up</title>
+  </head>
+  <body>
+    <div th:replace="fragments/nav :: navbar"></div>
+    <main>
+      <h2>Login</h2>
+      <div class="add-new-container" style="max-width: 420px; margin: 0 auto;">
+        <div id="server-data" th:if="${showSignup != null} or ${loginError != null} or ${signupError != null} or ${loginUsername != null} or ${signupUsername != null}" 
+             th:attr="data-show-signup=${showSignup},data-login-error=${loginError},data-signup-error=${signupError},data-login-username=${loginUsername},data-signup-username=${signupUsername}"
+             style="display:none"></div>
+        <div style="display:flex; gap:12px; justify-content:center; margin-bottom:12px;">
+          <button id="show-login" class="tab-toggle" aria-pressed="true">Login</button>
+          <button id="show-signup" class="tab-toggle" aria-pressed="false">Sign up</button>
+        </div>
+
+        <!-- Login form (default) -->
+        <form id="login-form" class="auth-form" style="display:block;" novalidate method="post" th:action="@{/login}">
+          <fieldset>
+            <legend>Login</legend>
+
+            <div class="form-row">
+              <label for="login-username">Username:</label>
+              <input type="text" id="login-username" name="username" placeholder="Enter username..." th:value="${loginUsername}" />
+              <span class="error-message" aria-live="polite" th:text="${loginError}"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="login-password">Password:</label>
+              <input type="password" id="login-password" name="password" placeholder="Enter password..." />
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit">Login</button>
+                <button type="button" onclick="window.location.href='/'">Cancel</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- Sign up form -->
+        <form id="signup-form" class="auth-form" style="display:none;" novalidate method="post" th:action="@{/signup}">
+          <fieldset>
+            <legend>Sign up</legend>
+
+            <div class="form-row">
+              <label for="signup-username">Username:</label>
+              <input type="text" id="signup-username" name="username" placeholder="Choose a username..." th:value="${signupUsername}" />
+              <span class="error-message" aria-live="polite" th:text="${signupError}"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="signup-password">Password:</label>
+              <input type="password" id="signup-password" name="password" placeholder="Choose a password..." />
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="signup-password-confirm">Confirm Password:</label>
+              <input type="password" id="signup-password-confirm" name="passwordConfirm" placeholder="Confirm password..." />
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit">Sign up</button>
+                <button type="button" onclick="window.location.href='/'">Cancel</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+
+    <script th:src="@{/js/review-validation.js}"></script>
+    <script>
+      // Toggle login/signup UI
+      document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const showLogin = document.getElementById('show-login');
+        const showSignup = document.getElementById('show-signup');
+
+        function show(which) {
+          if (which === 'login') {
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+            showLogin.setAttribute('aria-pressed', 'true');
+            showSignup.setAttribute('aria-pressed', 'false');
+          } else {
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            showLogin.setAttribute('aria-pressed', 'false');
+            showSignup.setAttribute('aria-pressed', 'true');
+          }
+        }
+
+        showLogin.addEventListener('click', () => show('login'));
+        showSignup.addEventListener('click', () => show('signup'));
+
+        const serverData = document.getElementById('server-data');
+        if (serverData) {
+          const ds = serverData.dataset || {};
+          if (ds.showSignup === 'true' || ds.signupError) {
+            show('signup');
+          } else {
+            show('login');
+          }
+        } else {
+          show('login');
+        }
+      });
+    </script>
+  </body>
+</html>

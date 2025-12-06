@@ -27,4 +27,9 @@ public class ViewController {
     public String editTitle() {
         return "edit-title";
     }
+    
+    @GetMapping("/login")
+    public String login() {
+        return "auth";
+    }
 }
