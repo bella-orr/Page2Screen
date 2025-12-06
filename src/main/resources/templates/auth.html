@@ -11,6 +11,9 @@
     <main>
       <h2>Login</h2>
       <div class="add-new-container" style="max-width: 420px; margin: 0 auto;">
+        <div id="server-data" th:if="${showSignup != null} or ${loginError != null} or ${signupError != null} or ${loginUsername != null} or ${signupUsername != null}" 
+             th:attr="data-show-signup=${showSignup},data-login-error=${loginError},data-signup-error=${signupError},data-login-username=${loginUsername},data-signup-username=${signupUsername}"
+             style="display:none"></div>
         <div style="display:flex; gap:12px; justify-content:center; margin-bottom:12px;">
           <button id="show-login" class="tab-toggle" aria-pressed="true">Login</button>
           <button id="show-signup" class="tab-toggle" aria-pressed="false">Sign up</button>
@@ -23,8 +26,8 @@
 
             <div class="form-row">
               <label for="login-username">Username:</label>
-              <input type="text" id="login-username" name="username" placeholder="Enter username..." />
-              <span class="error-message" aria-live="polite"></span>
+              <input type="text" id="login-username" name="username" placeholder="Enter username..." th:value="${loginUsername}" />
+              <span class="error-message" aria-live="polite" th:text="${loginError}"></span>
             </div>
 
             <div class="form-row">
@@ -47,8 +50,8 @@
 
             <div class="form-row">
               <label for="signup-username">Username:</label>
-              <input type="text" id="signup-username" name="username" placeholder="Choose a username..." />
-              <span class="error-message" aria-live="polite"></span>
+              <input type="text" id="signup-username" name="username" placeholder="Choose a username..." th:value="${signupUsername}" />
+              <span class="error-message" aria-live="polite" th:text="${signupError}"></span>
             </div>
 
             <div class="form-row">
@@ -98,8 +101,17 @@
         showLogin.addEventListener('click', () => show('login'));
         showSignup.addEventListener('click', () => show('signup'));
 
-        // Default to login
-        show('login');
+        const serverData = document.getElementById('server-data');
+        if (serverData) {
+          const ds = serverData.dataset || {};
+          if (ds.showSignup === 'true' || ds.signupError) {
+            show('signup');
+          } else {
+            show('login');
+          }
+        } else {
+          show('login');
+        }
       });
     </script>
   </body>
