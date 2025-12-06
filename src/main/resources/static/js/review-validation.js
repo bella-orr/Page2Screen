@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const passwordConfirm = find('passwordConfirm');
 
         if (username) {
-          if (!username.value || username.value.trim() === '') {
-            showError(username, 'Username is required.');
+          if (!username.value || username.value.length < 3) {
+            showError(username, 'Username must be at least 3 characters.');
             valid = false;
           }
         }

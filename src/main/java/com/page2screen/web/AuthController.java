@@ -42,11 +42,22 @@ public class AuthController {
       return "redirect:/";
     }
 
-  @GetMapping("/logout")
-  public String logout(HttpSession session) {
-    try {
+@GetMapping("/logout")
+public String logout(HttpSession session) {
+  try {
+    session.invalidate();
+  } catch (Exception ignored) {}
+  return "redirect:/";
+}
+
+  @PostMapping("/delete-account")
+  public String deleteAccount(HttpSession session) {
+    Object usernameObj = session.getAttribute("username");
+    if (usernameObj != null) {
+      String username = usernameObj.toString();
+      userService.deleteByUsername(username);
       session.invalidate();
-    } catch (Exception ignored) {}
+    }
     return "redirect:/";
   }
 }
