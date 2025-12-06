@@ -21,7 +21,7 @@
           alt="Profile Icon"
           class="profile-icon"
         />
-        <h2 class="profile-username">$Username</h2>
+        <h2 class="profile-username" th:text="${session.username}"></h2>
       </div>
       <div class="reviewstitle">
         <h2>User's Most Recent Reviews</h2>
