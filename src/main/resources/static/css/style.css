@@ -128,13 +128,34 @@ body {
   object-fit: cover;
 }
 
+
+.review-content {
+  font-size: 0.97em;
+}
+.review-meta-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;    /* horizontal center */
+  text-align: center;
+}
+.review-meta-col h3,
+.review-meta-col .review-meta,
+.review-meta-col .preview-stars {
+  width: 100%;
+}
 .review-content h3 {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
-
-.review-content p {
-  font-size: 14px;
+.review-content p.review-meta {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 0.98em;
+}
+.review-body-col p {
+  margin: 0;
+  font-size: 0.96em;
   color: #333;
   line-height: 1.5;
 }

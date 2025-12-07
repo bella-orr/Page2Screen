@@ -21,7 +21,7 @@ public class UserService {
   public User createUser(String username, String password) {
     if (username == null || username.isBlank()) throw new IllegalArgumentException("Username is required");
     if (password == null || password.length() < 8) throw new IllegalArgumentException("Password must be at least 8 characters");
-    if (userRepository.findByUsername(username).isPresent()) throw new IllegalStateException("User already exists");
+    if (userRepository.findByUsernameIgnoreCase(username).isPresent()) throw new IllegalStateException("User already exists");
     User u = new User();
     u.setId(UUID.randomUUID());
     u.setUsername(username);
@@ -31,16 +31,16 @@ public class UserService {
   }
 
   public boolean authenticate(String username, String password) {
-    Optional<User> uOpt = userRepository.findByUsername(username);
+    Optional<User> uOpt = userRepository.findByUsernameIgnoreCase(username);
     if (uOpt.isEmpty()) return false;
     return BCrypt.checkpw(password, uOpt.get().getPasswordHash());
   }
 
   public Optional<User> findByUsername(String username) {
-    return userRepository.findByUsername(username);
+    return userRepository.findByUsernameIgnoreCase(username);
   }
 
   public void deleteByUsername(String username) {
-    userRepository.findByUsername(username).ifPresent(userRepository::delete);
+    userRepository.findByUsernameIgnoreCase(username).ifPresent(userRepository::delete);
   }
 }
