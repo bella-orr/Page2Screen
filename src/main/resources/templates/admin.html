@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div th:replace="fragments/nav :: navbar"></div>
+
+    <main class="container">
+      <h1>Admin</h1>
+
+      <div>
+        <p>Works in DB: <strong th:text="${worksCount}">0</strong></p>
+        <p>Reviews in DB: <strong th:text="${reviewsCount}">0</strong></p>
+      </div>
+
+      <div>
+        <form th:action="@{/admin/clear}" method="post" style="display: inline">
+          <button type="submit">Clear Database</button>
+        </form>
+
+        <form
+          th:action="@{/admin/seed}"
+          method="post"
+          style="display: inline; margin-left: 1rem"
+        >
+          <button type="submit">Seed Database</button>
+        </form>
+      </div>
+
+      <div th:if="${message}" style="margin-top: 1rem; color: green">
+        <p th:text="${message}"></p>
+      </div>
+    </main>
+  </body>
+</html>

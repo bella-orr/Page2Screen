@@ -37,3 +37,12 @@ tasks.named("resolveMainClassName").configure {
 tasks.named("jar").configure {
   enabled = false
 }
+
+// for local development (enables admin panel)
+tasks.register('bootRunLocal', org.springframework.boot.gradle.tasks.run.BootRun) {
+  group = 'application'
+  description = 'Run application with Spring profile local'
+  mainClass.set("com.page2screen.Page2ScreenApplication")
+  args = ['--spring.profiles.active=local']
+  classpath = sourceSets.main.runtimeClasspath
+}

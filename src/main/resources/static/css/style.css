@@ -51,6 +51,10 @@ nav ul li a.active {
   background-color: #2791f5;
 }
 
+.navbar-admin {
+  color: orangered;
+}
+
 /* Main Page Design*/
 main {
   max-width: 900px;
