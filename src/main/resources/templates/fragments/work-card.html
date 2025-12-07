@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="work-card(work)">
+  <div class="work-card">
+    <img
+      class="work-image"
+      th:src="${work.mediaType.name() == 'MOVIE'} ? @{/images/movie_icon.png} : @{/images/book_icon.png}"
+      alt="media icon"
+    />
+    <div class="work-content">
+      <h3 th:text="${work.title}">Work Title</h3>
+      <p class="work-meta">
+        <span th:text="${work.mediaType}">MEDIA</span>
+        &nbsp;•&nbsp;
+        <span th:text="${work.releaseYear}">YEAR</span>
+      </p>
+    </div>
+  </div>
+</div>
