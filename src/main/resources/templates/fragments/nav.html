@@ -8,7 +8,15 @@
           <li><a th:href="@{/}">Home</a></li>
           <li><a th:href="@{/add-new}">Add a New Title</a></li>
         </div>
-        <li style="float: right">
+        <li style="float: right" th:unless="${session.username != null}">
+          <a th:href="@{/login}">Login/Sign up</a>
+        </li>
+
+        <li style="float: right" th:if="${session.username != null}">
+          <a th:href="@{/logout}">Logout</a>
+        </li>
+
+        <li style="float: right" th:if="${session.username != null}">
           <a th:href="@{/profile}"
             ><img
               th:src="@{/images/profile_icon.png}"
@@ -18,8 +26,7 @@
                 vertical-align: middle;
                 margin-right: 5px;
               "
-            />Profile</a
-          >
+            />Profile</a>
         </li>
       </ul>
     </nav>
