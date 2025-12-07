@@ -6,7 +6,10 @@
         <li><a href="" class="navbar-brand">Page2Screen</a></li>
         <div class="navbar-main">
           <li><a th:href="@{/}">Home</a></li>
-          <li><a th:href="@{/add-new}">Add a New Title</a></li>
+          <li>
+            <a th:if="${session.username != null}" th:href="@{/add-new}">Add a New Title</a>
+            <a th:unless="${session.username != null}" th:href="@{/login}">Add a New Title</a>
+          </li>
           <li th:if="${@environment.acceptsProfiles('local')}">
             <a th:href="@{/admin}" class="navbar-admin">Admin</a>
           </li>

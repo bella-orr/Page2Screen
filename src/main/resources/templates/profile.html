@@ -21,7 +21,7 @@
           alt="Profile Icon"
           class="profile-icon"
         />
-        <h2 class="profile-username" th:text="${session.username}"></h2>
+        <h2 class="profile-username" th:text="${#strings.capitalize(session.username)}"></h2>
       </div>
       <div class="reviewstitle">
         <h2>Your Most Recent Reviews</h2>
