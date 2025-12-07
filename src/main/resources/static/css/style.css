@@ -312,22 +312,39 @@ body {
   gap: 12px;
   align-items: flex-start;
 }
-.your-review-container .edit-review .form-actions {
+.your-review-container .form-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-.your-review-container .edit-review .form-actions button {
+
+/* Button utility classes */
+.btn {
   padding: 8px 14px;
   border-radius: 4px;
   border: 1px solid #888;
   background-color: #fff;
+  color: #000;
   cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }
-.your-review-container .edit-review .form-actions button[type="submit"] {
+.btn:hover {
+  opacity: 0.95;
+}
+.btn:focus {
+  outline: 2px solid rgba(39, 145, 245, 0.18);
+  outline-offset: 2px;
+}
+.btn-primary {
   background-color: #2791f5;
   color: #fff;
   border-color: #2791f5;
+}
+.btn-danger {
+  background-color: #d32f2f;
+  color: #fff;
+  border-color: #d32f2f;
 }
 
 /* Validation error styles */
