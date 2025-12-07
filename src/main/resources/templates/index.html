@@ -21,38 +21,17 @@
         <h2>Recent Reviews</h2>
       </div>
       <!--Review Cards-->
-      <div class="reviews-container">
-        <div class="review-card">
-          <img class="review-image" th:src="@{/images/movie_icon.png}" />
-          <div class="review-image-placeholder"></div>
-          <div class="review-content">
-            <h3>Movie Title</h3>
-            <div th:replace="fragments/stars :: review-stars(3)"></div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque
-              faucibus ex sapien vitae pellentesque sem placerat. In id cursus
-              mi pretium tellus duis convallis. Tempus leo eu aenean sed diam
-              urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
-              egestas. Iaculis massa nisi malesuada lacinia integer nunc
-              posuere.
-            </p>
-          </div>
+      <div
+        class="reviews-container"
+        th:with="reviews=${@reviewService.getAllWorks()}"
+      >
+        <div th:if="${#lists.isEmpty(reviews)}" class="no-reviews">
+          <p>No reviews yet.</p>
         </div>
-        <div class="review-card">
-          <img class="review-image" th:src="@{/images/book_icon.png}" />
-          <div class="review-image-placeholder"></div>
-          <div class="review-content">
-            <h3>Book Title</h3>
-            <div th:replace="fragments/stars :: review-stars(3)"></div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque
-              faucibus ex sapien vitae pellentesque sem placerat. In id cursus
-              mi pretium tellus duis convallis. Tempus leo eu aenean sed diam
-              urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
-              egestas. Iaculis massa nisi malesuada lacinia integer nunc
-              posuere.
-            </p>
-          </div>
+        <div th:each="review : ${reviews}">
+          <div
+            th:replace="fragments/review-card :: review-card(review=${review})"
+          ></div>
         </div>
       </div>
     </main>

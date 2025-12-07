@@ -7,6 +7,9 @@
         <div class="navbar-main">
           <li><a th:href="@{/}">Home</a></li>
           <li><a th:href="@{/add-new}">Add a New Title</a></li>
+          <li th:if="${@environment.acceptsProfiles('local')}">
+            <a th:href="@{/admin}" class="navbar-admin">Admin</a>
+          </li>
         </div>
         <li style="float: right" th:unless="${session.username != null}">
           <a th:href="@{/login}">Login/Sign up</a>
@@ -26,7 +29,8 @@
                 vertical-align: middle;
                 margin-right: 5px;
               "
-            />Profile</a>
+            />Profile</a
+          >
         </li>
       </ul>
     </nav>

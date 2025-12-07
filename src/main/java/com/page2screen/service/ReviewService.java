@@ -67,6 +67,18 @@ public class ReviewService {
         .toList();
   }
 
+  @Transactional(readOnly = true)
+  public List<Review> getAllWorks() {
+    List<Review> reviews = reviewRepo.findAll();
+    // Ensure the associated Work proxies are initialized while within the transaction
+    reviews.forEach(r -> {
+      if (r.getWork() != null) {
+        r.getWork().getMediaType();
+      }
+    });
+    return reviews;
+  }
+
   @Transactional
   public ReviewResponse createReview(UUID workId, ReviewCreateRequest req) {
     Work work = getWork(workId);
