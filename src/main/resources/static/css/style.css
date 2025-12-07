@@ -1,217 +1,395 @@
 /*Navigation Design*/
 nav {
-    background-color: #333333;
-    overflow: hidden;
+  background-color: #333333;
+  overflow: hidden;
 }
 ul {
-    list-style-type: none;
-    padding: 0;
-    overflow: hidden;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
 }
 
 ul li {
-    float: left;
+  float: left;
 }
 
 ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: large;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: large;
 }
 
 ul li a:hover {
-    background-color: #111111;
+  background-color: #111111;
 }
 
 nav ul li a.active {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-color: white;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: white;
 }
 
 .navbar-main {
-    max-width: 900px;
-    margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .navbar-brand {
-    font-weight: bold;
-    background-color: #2791f5;
-    pointer-events: none;
-    cursor: default;
-    font-size: large;
-    margin: 0;
+  font-weight: bold;
+  background-color: #2791f5;
+  pointer-events: none;
+  cursor: default;
+  font-size: large;
+  margin: 0;
 }
 
 .navbar-brand:hover {
-    background-color: #2791f5;
+  background-color: #2791f5;
 }
 
 /* Main Page Design*/
 main {
-    max-width: 900px;
-    margin: 20px auto;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
-body{
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Current User Display in Profile Page*/
 .profile-header {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid black;
-    padding: 15px;
-    margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .profile-icon {
-    width: 60px;
-    height: 60px;
-    margin-right: 15px;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
 }
 
 .profile-username {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
 }
 
 /* Review Cards Design*/
 .reviewstitle {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
 }
 
 .reviews-container {
-    border: 1px solid #b0b0b0;
-    padding: 10px;
-    background-color: #f9f9f9;
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: #f9f9f9;
 }
 .review-card {
-    display: flex;
-    align-items: flex-start;
-    border: 1px solid #aaa;
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 .review-card {
-    display: flex;
-    align-items: flex-start;
-    border: 1px solid #aaa;
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 .review-card:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .review-image {
-    width: 120px;
-    height: 120px;
-    border: 1px solid #ccc;
-    margin-right: 20px;
-    flex-shrink: 0;
-    object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+  margin-right: 20px;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .review-content h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .review-content p {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.5;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
 }
 
 /* Review Stars */
 .review-stars {
-    margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .star {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
+  filter: grayscale(100%) opacity(0.6);
+  transition: filter 0.12s ease, opacity 0.12s ease;
+  vertical-align: middle;
+}
+
+.star.highlighted {
+  filter: none;
+  opacity: 1;
 }
 
 /* Add New Title Design */
 .add-new-container {
-    border: 1px solid #b0b0b0;
-    padding: 10px;
-    background-color: #f9f9f9;
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: #f9f9f9;
 }
 
 .add-new-container form {
-    display: block;
+  display: block;
 }
 .add-new-container .form-row {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
 }
 .add-new-container .form-row label {
-    margin-bottom: 6px;
-    font-weight: 600;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 .add-new-container .form-row input[type="text"],
 .add-new-container .form-row input[type="number"] {
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    max-width: 100%;
-    box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .add-new-container .form-row .optional {
-    font-weight: normal;
-    font-style: italic;
-    font-size: 0.8em;
-    color: #666;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #666;
 }
 .add-new-container .form-row input::placeholder {
-    font-style: italic;
-    color: #777;
+  font-style: italic;
+  color: #777;
 }
 .add-new-container .form-row > div {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
 }
 .add-new-container .form-actions {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 .add-new-container .form-actions button {
-    padding: 8px 14px;
-    border-radius: 4px;
-    border: 1px solid #888;
-    background-color: #fff;
-    cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: #fff;
+  cursor: pointer;
 }
 .add-new-container .form-actions button[type="submit"] {
-    background-color: #2791f5;
-    color: #fff;
-    border-color: #2791f5;
+  background-color: #2791f5;
+  color: #fff;
+  border-color: #2791f5;
+}
+
+/* Title Details Design */
+
+.details-container {
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-around;
+  gap: 14px;
+  padding: 14px;
+}
+
+.details-container .poster {
+  flex-grow: 1;
+  min-width: 75px;
+  min-height: 150px;
+}
+.details-container .info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.details-container .community-reviews-container {
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: white;
+  flex-grow: 3;
+}
+
+.details-container .community-reviews-container .review-preview {
+  border: 1px solid #b0b0b0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-height: 80px;
+}
+
+.details-container .community-reviews-container .review-preview .preview-left {
+  min-width: 100px;
+}
+
+.details-container
+  .community-reviews-container
+  .review-preview
+  .review-preview-text {
+  max-width: 375px;
+  max-height: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details-container .community-reviews-container .review-preview .preview-title {
+  font-weight: bold;
+}
+
+.details-container
+  .community-reviews-container
+  .review-preview
+  .preview-stars
+  .star {
+  width: 15px;
+  height: 15px;
+}
+
+.your-review-container {
+  border: 1px solid #b0b0b0;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.your-review-container .add-review {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.your-review-container .view-review {
+  padding: 15px;
+}
+.your-review-container .view-review .review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.your-review-container .view-review .review-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.your-review-container .edit-review {
+  display: block;
+}
+.your-review-container .edit-review .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.your-review-container .edit-review .form-row label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.your-review-container .edit-review .form-row input[type="text"],
+.your-review-container .edit-review .form-row input[type="number"],
+.your-review-container .edit-review .form-row textarea,
+.your-review-container .edit-review .form-row select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.your-review-container .edit-review .form-row .optional {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #666;
+}
+.your-review-container .edit-review .form-row input::placeholder,
+.your-review-container .edit-review .form-row textarea::placeholder {
+  font-style: italic;
+  color: #777;
+}
+.your-review-container .edit-review .form-row > div {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.your-review-container .form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Button utility classes */
+.btn {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+.btn:hover {
+  opacity: 0.95;
+}
+.btn:focus {
+  outline: 2px solid rgba(39, 145, 245, 0.18);
+  outline-offset: 2px;
+}
+.btn-primary {
+  background-color: #2791f5;
+  color: #fff;
+  border-color: #2791f5;
+}
+.btn-danger {
+  background-color: #d32f2f;
+  color: #fff;
+  border-color: #d32f2f;
 }
 
 /* Validation error styles */
 .error-message {
-    color: #c62828;
-    font-size: 0.9em;
-    margin-top: 6px;
-    display: block;
+  color: #c62828;
+  font-size: 0.9em;
+  margin-top: 6px;
+  display: block;
 }
 .input-error {
-    border-color: #c62828 !important;
-    box-shadow: 0 0 0 2px rgba(198,40,40,0.06);
+  border-color: #c62828 !important;
+  box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.06);
 }

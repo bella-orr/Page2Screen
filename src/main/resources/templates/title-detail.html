@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <title>Title Details</title>
+  </head>
+  <body>
+    <!--Navigation Bar-->
+    <div th:replace="fragments/nav :: navbar"></div>
+
+    <!--Main Content-->
+    <main>
+      <h2>Title Details</h2>
+      <div class="details-container">
+        <img
+          class="poster"
+          th:src="@{/images/movie_icon.png}"
+          alt="default movie image"
+        />
+        <div class="info">
+          <div>Title (Year)</div>
+          <br />
+          <div>Author / Director</div>
+          <div>ExternalIds go here</div>
+        </div>
+        <div class="community-reviews-container">
+          <h4>Community Reviews</h4>
+          <div
+            th:replace="fragments/title-detail-fragments :: review-preview"
+          ></div>
+          <div
+            th:replace="fragments/title-detail-fragments :: review-preview"
+          ></div>
+          <div
+            th:replace="fragments/title-detail-fragments :: review-preview"
+          ></div>
+        </div>
+      </div>
+      <div class="your-review-container">
+        <h3>Your Review</h3>
+        <hr />
+        <div th:replace="fragments/title-detail-fragments :: add-review"></div>
+        <div th:replace="fragments/title-detail-fragments :: view-review"></div>
+        <div th:replace="fragments/title-detail-fragments :: edit-review"></div>
+      </div>
+    </main>
+    <script th:src="@{/js/title-detail-fragments.js}"></script>
+  </body>
+</html>

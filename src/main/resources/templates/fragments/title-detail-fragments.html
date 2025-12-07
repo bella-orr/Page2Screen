@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <!-- add review -->
+    <div th:fragment="add-review">
+      <div class="add-review" id="add-review">
+        <div>You haven't reviewed this Title!</div>
+        <br />
+        <button type="button" class="btn btn-primary">Add a Review</button>
+      </div>
+    </div>
+    <!-- view review -->
+    <div th:fragment="view-review">
+      <div class="view-review" id="view-review">
+        <div class="review-header">
+          <h2>Review Title</h2>
+          <div th:replace="fragments/stars :: review-stars(3)"></div>
+        </div>
+        <p class="review-content">
+          Review content goes here. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem
+          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
+          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
+          metus bibendum egestas. Iaculis massa nisi malesuada lacinia integer
+          nunc posuere.
+        </p>
+        <div class="review-footer">
+          <button type="button" class="btn btn-primary">Edit Review</button>
+          <button type="button" class="btn btn-danger">Delete Review</button>
+        </div>
+      </div>
+    </div>
+    <!-- edit review -->
+    <div th:fragment="edit-review">
+      <div class="edit-review" id="edit-review">
+        <form id="edit-review-form">
+          <fieldset>
+            <legend>Edit Review</legend>
+
+            <div class="form-row">
+              <label for="review-title">Review Title:</label>
+              <input
+                type="text"
+                id="review-title"
+                name="title"
+                placeholder="Enter review title"
+              />
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="review-rating">Rating:</label>
+              <select id="review-rating" name="rating">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="review-body">Review Body:</label>
+              <textarea
+                id="review-body"
+                name="body"
+                rows="6"
+                placeholder="Write your review here..."
+              ></textarea>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">
+                Submit Review
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!-- other reviews -->
+    <div th:fragment="review-preview">
+      <div class="review-preview">
+        <div class="preview-left">
+          <div class="preview-title">Review Title</div>
+          <div class="preview-stars">
+            <div th:replace="fragments/stars :: review-stars(3)"></div>
+          </div>
+        </div>
+        <div>
+          <p class="review-preview-text">
+            Review content goes here. This should be truncated. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Quisque faucibus ex
+            sapien vitae pellentesque sem placerat. In id cursus mi pretium
+            tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
+            massa nisi malesuada lacinia integer nunc posuere.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

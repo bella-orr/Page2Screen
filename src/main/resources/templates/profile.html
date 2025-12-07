@@ -34,11 +34,7 @@
           <div class="review-content">
             <h3>Movie Title</h3>
             <div class="review-stars">
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
+              <div th:replace="fragments/stars :: review-stars(3)"></div>
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque
@@ -56,11 +52,7 @@
           <div class="review-content">
             <h3>Book Title</h3>
             <div class="review-stars">
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
-              <img class="star" th:src="@{/images/star.png}" />
+              <div th:replace="fragments/stars :: review-stars(3)"></div>
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisque
@@ -74,8 +66,12 @@
         </div>
       </div>
     </main>
-    <form method="post" th:action="@{/delete-account}" style="margin-top:32px; text-align:center;">
-      <button type="submit" style="background:#c00; color:#fff; padding:8px 24px; border:none; border-radius:4px;">Delete Account</button>
+    <form
+      method="post"
+      th:action="@{/delete-account}"
+      style="margin-top: 32px; text-align: center"
+    >
+      <button type="submit" class="btn btn-danger">Delete Account</button>
     </form>
   </body>
 </html>

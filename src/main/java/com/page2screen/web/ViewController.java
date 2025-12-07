@@ -32,4 +32,9 @@ public class ViewController {
     public String login() {
         return "auth";
     }
+
+    @GetMapping("/title-detail")
+    public String titleDetail() {
+        return "title-detail";
+    }
 }
