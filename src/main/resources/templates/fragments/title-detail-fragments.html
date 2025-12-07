@@ -3,7 +3,7 @@
   <body>
     <!-- add review -->
     <div th:fragment="add-review">
-      <div class="add-review">
+      <div class="add-review" id="add-review">
         <div>You haven't reviewed this Title!</div>
         <br />
         <button type="button">Add a Review</button>
@@ -11,7 +11,7 @@
     </div>
     <!-- view review -->
     <div th:fragment="view-review">
-      <div class="view-review">
+      <div class="view-review" id="view-review">
         <div class="review-header">
           <h2>Review Title</h2>
           <div th:replace="fragments/stars :: review-stars(3)"></div>
@@ -31,6 +31,54 @@
       </div>
     </div>
     <!-- edit review -->
-    <div th:fragment="edit-review"></div>
+    <div th:fragment="edit-review">
+      <div class="edit-review" id="edit-review">
+        <form id="edit-review-form">
+          <fieldset>
+            <legend>Edit Review</legend>
+
+            <div class="form-row">
+              <label for="review-title">Review Title:</label>
+              <input
+                type="text"
+                id="review-title"
+                name="title"
+                placeholder="Enter review title"
+              />
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="review-rating">Rating:</label>
+              <select id="review-rating" name="rating">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-row">
+              <label for="review-body">Review Body:</label>
+              <textarea
+                id="review-body"
+                name="body"
+                rows="6"
+                placeholder="Write your review here..."
+              ></textarea>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="button">Cancel</button>
+              <button type="submit">Submit Review</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

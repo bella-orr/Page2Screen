@@ -274,14 +274,70 @@ body {
   align-items: center;
 }
 
+.your-review-container .edit-review {
+  display: block;
+}
+.your-review-container .edit-review .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.your-review-container .edit-review .form-row label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.your-review-container .edit-review .form-row input[type="text"],
+.your-review-container .edit-review .form-row input[type="number"],
+.your-review-container .edit-review .form-row textarea,
+.your-review-container .edit-review .form-row select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.your-review-container .edit-review .form-row .optional {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #666;
+}
+.your-review-container .edit-review .form-row input::placeholder,
+.your-review-container .edit-review .form-row textarea::placeholder {
+  font-style: italic;
+  color: #777;
+}
+.your-review-container .edit-review .form-row > div {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.your-review-container .edit-review .form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.your-review-container .edit-review .form-actions button {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: #fff;
+  cursor: pointer;
+}
+.your-review-container .edit-review .form-actions button[type="submit"] {
+  background-color: #2791f5;
+  color: #fff;
+  border-color: #2791f5;
+}
+
 /* Validation error styles */
 .error-message {
-    color: #c62828;
-    font-size: 0.9em;
-    margin-top: 6px;
-    display: block;
+  color: #c62828;
+  font-size: 0.9em;
+  margin-top: 6px;
+  display: block;
 }
 .input-error {
-    border-color: #c62828 !important;
-    box-shadow: 0 0 0 2px rgba(198,40,40,0.06);
+  border-color: #c62828 !important;
+  box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.06);
 }
