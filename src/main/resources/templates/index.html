@@ -13,7 +13,9 @@
     <!--Main Content-->
     <main>
       <h2>Home</h2>
-      <h1 th:if="${session.username != null}">Welcome, <span th:text="${session.username}"></span> to ReviewHub!</h1>
+      <h1 th:if="${session.username != null}">
+        Welcome, <span th:text="${session.username}"></span> to ReviewHub!
+      </h1>
       <h1 th:unless="${session.username != null}">Welcome to ReviewHub!</h1>
       <div class="reviewstitle">
         <h2>Recent Reviews</h2>
