@@ -74,10 +74,33 @@
 
             <div class="form-actions">
               <button type="button" class="btn">Cancel</button>
-              <button type="submit" class="btn btn-primary">Submit Review</button>
+              <button type="submit" class="btn btn-primary">
+                Submit Review
+              </button>
             </div>
           </fieldset>
         </form>
+      </div>
+    </div>
+    <!-- other reviews -->
+    <div th:fragment="review-preview">
+      <div class="review-preview">
+        <div class="preview-left">
+          <div class="preview-title">Review Title</div>
+          <div class="preview-stars">
+            <div th:replace="fragments/stars :: review-stars(3)"></div>
+          </div>
+        </div>
+        <div>
+          <p class="review-preview-text">
+            Review content goes here. This should be truncated. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Quisque faucibus ex
+            sapien vitae pellentesque sem placerat. In id cursus mi pretium
+            tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
+            massa nisi malesuada lacinia integer nunc posuere.
+          </p>
+        </div>
       </div>
     </div>
   </body>

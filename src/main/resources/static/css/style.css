@@ -246,6 +246,41 @@ body {
   flex-grow: 3;
 }
 
+.details-container .community-reviews-container .review-preview {
+  border: 1px solid #b0b0b0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-height: 80px;
+}
+
+.details-container .community-reviews-container .review-preview .preview-left {
+  min-width: 100px;
+}
+
+.details-container
+  .community-reviews-container
+  .review-preview
+  .review-preview-text {
+  max-width: 375px;
+  max-height: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details-container .community-reviews-container .review-preview .preview-title {
+  font-weight: bold;
+}
+
+.details-container
+  .community-reviews-container
+  .review-preview
+  .preview-stars
+  .star {
+  width: 15px;
+  height: 15px;
+}
+
 .your-review-container {
   border: 1px solid #b0b0b0;
   padding: 10px;
