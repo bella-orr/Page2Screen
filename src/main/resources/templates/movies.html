@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <title>Movies</title>
+  </head>
+  <body>
+    <div th:replace="fragments/nav :: navbar"></div>
+    <main>
+      <h2>Movies</h2>
+      <div class="works-container" th:with="works=${works}">
+        <div th:if="${#lists.isEmpty(works)}" class="no-works">
+          <p>No movies found.</p>
+        </div>
+        <div th:each="work : ${works}">
+          <div
+            th:replace="fragments/work-card :: work-card(work=${work})"
+          ></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
