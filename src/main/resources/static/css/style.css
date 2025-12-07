@@ -262,7 +262,13 @@ body {
 .details-container .poster {
   flex-grow: 1;
   min-width: 75px;
-  min-height: 150px;
+  /* Keep a reasonable max size but allow natural proportions */
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 .details-container .info {
   flex-grow: 1;
@@ -273,6 +279,18 @@ body {
   background-color: white;
   align-items: center;
   justify-content: center;
+}
+.title-text {
+  font-size: 1.4em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.year-text {
+  text-align: center;
+  color: #666;
+  font-size: 1em;
+  margin-top: 2px;
 }
 .details-container .community-reviews-container {
   border: 1px solid #b0b0b0;
@@ -398,6 +416,7 @@ body {
   cursor: pointer;
   display: inline-block;
   text-align: center;
+  text-decoration: none;
 }
 .btn:hover {
   opacity: 0.95;

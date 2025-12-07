@@ -14,17 +14,36 @@
     <!--Main Content-->
     <main>
       <h2>Title Details</h2>
-      <div class="details-container">
+      <div class="details-container" th:with="work=${work}">
         <img
           class="poster"
-          th:src="@{/images/movie_icon.png}"
-          alt="default movie image"
+          th:src="${work != null and work.mediaType.name() == 'MOVIE'} ? @{/images/movie_icon.png} : @{/images/book_icon.png}"
+          alt="poster"
         />
         <div class="info">
-          <div>Title (Year)</div>
+          <div>
+            <div
+              class="title-text"
+              th:text="${work != null ? work.title : 'Title'}"
+            >
+              Title
+            </div>
+            <div
+              class="year-text"
+              th:text="${work != null ? '(' + work.releaseYear + ')' : '(Year)'}"
+            >
+              (Year)
+            </div>
+          </div>
           <br />
-          <div>Author / Director</div>
-          <div>ExternalIds go here</div>
+
+          <!-- commented out since this info isn't useful -->
+          <!-- <div th:text="${work != null ? work.mediaType : 'Media'}">
+            Author / Director
+          </div>
+          <div th:text="${work != null ? 'Created: ' + work.createdAt : ''}">
+            ExternalIds go here
+          </div> -->
         </div>
         <div class="community-reviews-container">
           <h4>Community Reviews</h4>

@@ -13,6 +13,11 @@
         &nbsp;•&nbsp;
         <span th:text="${work.releaseYear}">YEAR</span>
       </p>
+      <div class="work-actions" style="margin-top: 10px">
+        <a th:href="@{/title/{id}(id=${work.id})}" class="btn btn-primary"
+          >View Reviews</a
+        >
+      </div>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import com.page2screen.repo.WorkRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -42,8 +43,10 @@ public class ViewController {
         return "auth";
     }
 
-    @GetMapping("/title-detail")
-    public String titleDetail() {
+    @GetMapping("/title/{workId}")
+    public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model) {
+        Work work = workRepository.findById(workId).orElse(null);
+        model.addAttribute("work", work);
         return "title-detail";
     }
 
