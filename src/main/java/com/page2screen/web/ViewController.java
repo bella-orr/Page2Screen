@@ -1,6 +1,9 @@
 package com.page2screen.web;
 
 import jakarta.servlet.http.HttpSession;
+import com.page2screen.service.UserService;
+import com.page2screen.service.ReviewService;
+import com.page2screen.web.dto.ReviewResponse;
 import com.page2screen.domain.MediaType;
 import com.page2screen.domain.Work;
 import com.page2screen.repo.WorkRepository;
@@ -14,9 +17,13 @@ import java.util.List;
 @Controller
 public class ViewController {
     private final WorkRepository workRepository;
+    private final UserService userService;
+    private final ReviewService reviewService;
 
-    public ViewController(WorkRepository workRepository) {
+    public ViewController(WorkRepository workRepository, UserService userService, ReviewService reviewService) {
         this.workRepository = workRepository;
+        this.userService = userService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping("/")
@@ -54,9 +61,32 @@ public class ViewController {
     }
 
     @GetMapping("/title/{workId}")
-    public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model) {
+    public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model, HttpSession session) {
         Work work = workRepository.findById(workId).orElse(null);
         model.addAttribute("work", work);
+        try {
+            java.util.List<ReviewResponse> communityReviews = reviewService.listReviews(workId);
+            model.addAttribute("communityReviews", communityReviews);
+        } catch (Exception ignored) {
+            model.addAttribute("communityReviews", java.util.List.of());
+        }
+        Object usernameObj = session.getAttribute("username");
+        if (usernameObj != null) {
+            String username = usernameObj.toString();
+            userService.findByUsername(username).ifPresent(u -> {
+                model.addAttribute("currentUserId", u.getId());
+                model.addAttribute("currentUserDisplayName", u.getUsername());
+                try {
+                    ReviewResponse myReview = reviewService.listReviews(workId).stream()
+                        .filter(r -> r.author() != null && u.getId().equals(r.author().id()))
+                        .findFirst()
+                        .orElse(null);
+                    model.addAttribute("currentUserReview", myReview);
+                } catch (Exception ignored) {
+                    model.addAttribute("currentUserReview", null);
+                }
+            });
+        }
         return "title-detail";
     }
 

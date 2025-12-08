@@ -47,18 +47,22 @@
         </div>
         <div class="community-reviews-container">
           <h4>Community Reviews</h4>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
+          <div th:if="${communityReviews != null}">
+            <div th:each="r : ${communityReviews}">
+              <div
+                th:replace="fragments/title-detail-fragments :: review-preview(${r})"
+              ></div>
+            </div>
+          </div>
+          <div th:unless="${communityReviews == null}">
+            <p>No community reviews yet. Ask a friend to review this title!</p>
+          </div>
         </div>
       </div>
-      <div class="your-review-container">
+      <div
+        class="your-review-container"
+        th:attr="data-work-id=${work.id}, data-current-user-id=${currentUserId}, data-current-user-displayname=${currentUserDisplayName}"
+      >
         <h3>Your Review</h3>
         <hr />
         <div th:replace="fragments/title-detail-fragments :: add-review"></div>
@@ -66,6 +70,6 @@
         <div th:replace="fragments/title-detail-fragments :: edit-review"></div>
       </div>
     </main>
-    <script th:src="@{/js/title-detail-fragments.js}"></script>
+    <script th:src="@{/js/title-detail.js}"></script>
   </body>
 </html>

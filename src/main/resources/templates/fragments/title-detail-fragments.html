@@ -6,27 +6,47 @@
       <div class="add-review" id="add-review">
         <div>You haven't reviewed this Title!</div>
         <br />
-        <button type="button" class="btn btn-primary">Add a Review</button>
+        <button type="button" id="add-review-btn" class="btn btn-primary">
+          Add a Review
+        </button>
       </div>
     </div>
     <!-- view review -->
     <div th:fragment="view-review">
       <div class="view-review" id="view-review">
         <div class="review-header">
-          <h2>Review Title</h2>
-          <div th:replace="fragments/stars :: review-stars(3)"></div>
+          <h2
+            th:text="${currentUserReview != null ? currentUserReview.title : 'Review Title'}"
+          >
+            Review Title
+          </h2>
+          <div
+            th:replace="fragments/stars :: review-stars(${currentUserReview != null ? currentUserReview.rating : 0})"
+          ></div>
         </div>
-        <p class="review-content">
-          Review content goes here. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
-          metus bibendum egestas. Iaculis massa nisi malesuada lacinia integer
-          nunc posuere.
+        <p
+          class="review-content"
+          th:text="${currentUserReview != null ? currentUserReview.body : 'Review content goes here.'}"
+        >
+          Review content goes here.
         </p>
         <div class="review-footer">
-          <button type="button" class="btn btn-primary">Edit Review</button>
-          <button type="button" class="btn btn-danger">Delete Review</button>
+          <button
+            type="button"
+            id="view-edit-btn"
+            class="btn btn-primary"
+            th:if="${currentUserReview != null}"
+          >
+            Edit Review
+          </button>
+          <button
+            type="button"
+            id="view-delete-btn"
+            class="btn btn-danger"
+            th:if="${currentUserReview != null}"
+          >
+            Delete Review
+          </button>
         </div>
       </div>
     </div>
@@ -44,6 +64,7 @@
                 id="review-title"
                 name="title"
                 placeholder="Enter review title"
+                th:value="${currentUserReview != null ? currentUserReview.title : ''}"
               />
               <span class="error-message" aria-live="polite"></span>
             </div>
@@ -51,12 +72,42 @@
             <div class="form-row">
               <label for="review-rating">Rating:</label>
               <select id="review-rating" name="rating">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option
+                  th:value="0"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 0}"
+                >
+                  0
+                </option>
+                <option
+                  th:value="1"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 1}"
+                >
+                  1
+                </option>
+                <option
+                  th:value="2"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 2}"
+                >
+                  2
+                </option>
+                <option
+                  th:value="3"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 3}"
+                >
+                  3
+                </option>
+                <option
+                  th:value="4"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 4}"
+                >
+                  4
+                </option>
+                <option
+                  th:value="5"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 5}"
+                >
+                  5
+                </option>
               </select>
               <span class="error-message" aria-live="polite"></span>
             </div>
@@ -68,37 +119,52 @@
                 name="body"
                 rows="6"
                 placeholder="Write your review here..."
+                th:text="${currentUserReview != null ? currentUserReview.body : ''}"
               ></textarea>
               <span class="error-message" aria-live="polite"></span>
             </div>
 
             <div class="form-actions">
-              <button type="button" class="btn">Cancel</button>
-              <button type="submit" class="btn btn-primary">
+              <button type="button" id="edit-cancel-btn" class="btn">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                id="edit-submit-btn"
+                class="btn btn-primary"
+              >
                 Submit Review
+              </button>
+              <button type="button" id="edit-delete-btn" class="btn btn-danger">
+                Delete Review
               </button>
             </div>
           </fieldset>
         </form>
       </div>
     </div>
-    <!-- other reviews -->
-    <div th:fragment="review-preview">
-      <div class="review-preview">
+    <!-- other reviews: accepts a 'review' param and hides if review is by current user -->
+    <div th:fragment="review-preview(review)">
+      <div
+        class="review-preview"
+        th:if="${review != null and (currentUserId == null or review.author.id != currentUserId)}"
+      >
         <div class="preview-left">
-          <div class="preview-title">Review Title</div>
+          <div class="preview-title" th:text="${review.title}">
+            Review Title
+          </div>
           <div class="preview-stars">
-            <div th:replace="fragments/stars :: review-stars(3)"></div>
+            <div
+              th:replace="fragments/stars :: review-stars(${review.rating})"
+            ></div>
           </div>
         </div>
         <div>
-          <p class="review-preview-text">
-            Review content goes here. This should be truncated. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quisque faucibus ex
-            sapien vitae pellentesque sem placerat. In id cursus mi pretium
-            tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
-            massa nisi malesuada lacinia integer nunc posuere.
+          <p
+            class="review-preview-text"
+            th:text="${review.body != null and review.body.length() > 200 ? review.body.substring(0,200) + '...' : review.body}"
+          >
+            Review content goes here. This should be truncated.
           </p>
         </div>
       </div>
