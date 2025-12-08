@@ -6,7 +6,9 @@
       <div class="add-review" id="add-review">
         <div>You haven't reviewed this Title!</div>
         <br />
-        <button type="button" class="btn btn-primary">Add a Review</button>
+        <button type="button" id="add-review-btn" class="btn btn-primary">
+          Add a Review
+        </button>
       </div>
     </div>
     <!-- view review -->
@@ -25,8 +27,12 @@
           nunc posuere.
         </p>
         <div class="review-footer">
-          <button type="button" class="btn btn-primary">Edit Review</button>
-          <button type="button" class="btn btn-danger">Delete Review</button>
+          <button type="button" id="view-edit-btn" class="btn btn-primary">
+            Edit Review
+          </button>
+          <button type="button" id="view-delete-btn" class="btn btn-danger">
+            Delete Review
+          </button>
         </div>
       </div>
     </div>
@@ -73,9 +79,18 @@
             </div>
 
             <div class="form-actions">
-              <button type="button" class="btn">Cancel</button>
-              <button type="submit" class="btn btn-primary">
+              <button type="button" id="edit-cancel-btn" class="btn">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                id="edit-submit-btn"
+                class="btn btn-primary"
+              >
                 Submit Review
+              </button>
+              <button type="button" id="edit-delete-btn" class="btn btn-danger">
+                Delete Review
               </button>
             </div>
           </fieldset>

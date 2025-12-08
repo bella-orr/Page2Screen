@@ -58,7 +58,10 @@
           ></div>
         </div>
       </div>
-      <div class="your-review-container">
+      <div
+        class="your-review-container"
+        th:attr="data-work-id=${work.id}, data-current-user-id=${currentUserId}, data-current-user-displayname=${currentUserDisplayName}"
+      >
         <h3>Your Review</h3>
         <hr />
         <div th:replace="fragments/title-detail-fragments :: add-review"></div>
@@ -66,6 +69,6 @@
         <div th:replace="fragments/title-detail-fragments :: edit-review"></div>
       </div>
     </main>
-    <script th:src="@{/js/title-detail-fragments.js}"></script>
+    <script th:src="@{/js/title-detail.js}"></script>
   </body>
 </html>

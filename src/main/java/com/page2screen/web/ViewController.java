@@ -1,6 +1,7 @@
 package com.page2screen.web;
 
 import jakarta.servlet.http.HttpSession;
+import com.page2screen.service.UserService;
 import com.page2screen.domain.MediaType;
 import com.page2screen.domain.Work;
 import com.page2screen.repo.WorkRepository;
@@ -14,9 +15,11 @@ import java.util.List;
 @Controller
 public class ViewController {
     private final WorkRepository workRepository;
+    private final UserService userService;
 
-    public ViewController(WorkRepository workRepository) {
+    public ViewController(WorkRepository workRepository, UserService userService) {
         this.workRepository = workRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -54,9 +57,17 @@ public class ViewController {
     }
 
     @GetMapping("/title/{workId}")
-    public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model) {
+    public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model, HttpSession session) {
         Work work = workRepository.findById(workId).orElse(null);
         model.addAttribute("work", work);
+        Object usernameObj = session.getAttribute("username");
+        if (usernameObj != null) {
+            String username = usernameObj.toString();
+            userService.findByUsername(username).ifPresent(u -> {
+                model.addAttribute("currentUserId", u.getId());
+                model.addAttribute("currentUserDisplayName", u.getUsername());
+            });
+        }
         return "title-detail";
     }
 
