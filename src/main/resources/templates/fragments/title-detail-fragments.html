@@ -15,22 +15,36 @@
     <div th:fragment="view-review">
       <div class="view-review" id="view-review">
         <div class="review-header">
-          <h2>Review Title</h2>
-          <div th:replace="fragments/stars :: review-stars(3)"></div>
+          <h2
+            th:text="${currentUserReview != null ? currentUserReview.title : 'Review Title'}"
+          >
+            Review Title
+          </h2>
+          <div
+            th:replace="fragments/stars :: review-stars(${currentUserReview != null ? currentUserReview.rating : 0})"
+          ></div>
         </div>
-        <p class="review-content">
-          Review content goes here. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quisque faucibus ex sapien vitae pellentesque sem
-          placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu
-          aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
-          metus bibendum egestas. Iaculis massa nisi malesuada lacinia integer
-          nunc posuere.
+        <p
+          class="review-content"
+          th:text="${currentUserReview != null ? currentUserReview.body : 'Review content goes here.'}"
+        >
+          Review content goes here.
         </p>
         <div class="review-footer">
-          <button type="button" id="view-edit-btn" class="btn btn-primary">
+          <button
+            type="button"
+            id="view-edit-btn"
+            class="btn btn-primary"
+            th:if="${currentUserReview != null}"
+          >
             Edit Review
           </button>
-          <button type="button" id="view-delete-btn" class="btn btn-danger">
+          <button
+            type="button"
+            id="view-delete-btn"
+            class="btn btn-danger"
+            th:if="${currentUserReview != null}"
+          >
             Delete Review
           </button>
         </div>
@@ -50,6 +64,7 @@
                 id="review-title"
                 name="title"
                 placeholder="Enter review title"
+                th:value="${currentUserReview != null ? currentUserReview.title : ''}"
               />
               <span class="error-message" aria-live="polite"></span>
             </div>
@@ -57,12 +72,42 @@
             <div class="form-row">
               <label for="review-rating">Rating:</label>
               <select id="review-rating" name="rating">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option
+                  th:value="0"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 0}"
+                >
+                  0
+                </option>
+                <option
+                  th:value="1"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 1}"
+                >
+                  1
+                </option>
+                <option
+                  th:value="2"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 2}"
+                >
+                  2
+                </option>
+                <option
+                  th:value="3"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 3}"
+                >
+                  3
+                </option>
+                <option
+                  th:value="4"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 4}"
+                >
+                  4
+                </option>
+                <option
+                  th:value="5"
+                  th:selected="${currentUserReview != null and currentUserReview.rating == 5}"
+                >
+                  5
+                </option>
               </select>
               <span class="error-message" aria-live="polite"></span>
             </div>
@@ -74,6 +119,7 @@
                 name="body"
                 rows="6"
                 placeholder="Write your review here..."
+                th:text="${currentUserReview != null ? currentUserReview.body : ''}"
               ></textarea>
               <span class="error-message" aria-live="polite"></span>
             </div>
