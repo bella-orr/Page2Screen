@@ -47,15 +47,16 @@
         </div>
         <div class="community-reviews-container">
           <h4>Community Reviews</h4>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
-          <div
-            th:replace="fragments/title-detail-fragments :: review-preview"
-          ></div>
+          <div th:if="${communityReviews != null}">
+            <div th:each="r : ${communityReviews}">
+              <div
+                th:replace="fragments/title-detail-fragments :: review-preview(${r})"
+              ></div>
+            </div>
+          </div>
+          <div th:unless="${communityReviews == null}">
+            <p>No community reviews yet. Ask a friend to review this title!</p>
+          </div>
         </div>
       </div>
       <div

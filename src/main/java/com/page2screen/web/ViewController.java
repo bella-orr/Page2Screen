@@ -64,6 +64,12 @@ public class ViewController {
     public String titleDetailForWork(@PathVariable() java.util.UUID workId, Model model, HttpSession session) {
         Work work = workRepository.findById(workId).orElse(null);
         model.addAttribute("work", work);
+        try {
+            java.util.List<ReviewResponse> communityReviews = reviewService.listReviews(workId);
+            model.addAttribute("communityReviews", communityReviews);
+        } catch (Exception ignored) {
+            model.addAttribute("communityReviews", java.util.List.of());
+        }
         Object usernameObj = session.getAttribute("username");
         if (usernameObj != null) {
             String username = usernameObj.toString();
